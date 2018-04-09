@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class App extends Component {
   render() {
     return (
-      <h1>Hello JSX</h1>
+      <h1>Hello JSX 2018</h1>
     )
   }
 }
