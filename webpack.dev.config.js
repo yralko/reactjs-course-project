@@ -19,8 +19,6 @@ const config = {
       },
       {
         test: /\.css$/,
-        modules: true,
-        localIdentName: '[name]__[local]___[hash:base64:5]';
         use: [miniCssExtractPlugin.loader, "css-loader"]
       }
     ]
