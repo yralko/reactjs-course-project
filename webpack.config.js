@@ -1,13 +1,14 @@
+const webpack = require('webpack');
 const path = require('path');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: ['webpack-hot-middleware/client', path.resolve(__dirname, 'src/index.js')],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/dist/'
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -26,7 +27,10 @@ const config = {
     new miniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 }
 
