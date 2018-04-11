@@ -6,8 +6,8 @@ import TFunctionalComponent from './app/components/TFunctionalComponent/TFunctio
 import TCreateElement from './app/components/TCreateElement/TCreateElement';
 
 
-if(module.hot) {
-   module.hot.accept();
+if (module.hot) {
+  module.hot.accept();
 }
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
         <TFunctionalComponent />
         <TCreateElement />
       </div>
-    )
+    );
   }
 }
 

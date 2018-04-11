@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'development',
@@ -8,7 +8,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -19,19 +19,19 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [miniCssExtractPlugin.loader, "css-loader"]
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'],
+      },
+    ],
   },
   plugins: [
-    new miniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
-  ]
-}
+    new webpack.NoEmitOnErrorsPlugin(),
+  ],
+};
 
 module.exports = config;

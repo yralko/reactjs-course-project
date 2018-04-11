@@ -4,17 +4,19 @@ const open = require('open');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.dev.config');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require("webpack-hot-middleware");
+const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const compiler = webpack(webpackConfig);
 const app = express();
 const port = 3000;
 
+process.env.NODE_ENV = 'development';
+
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../src/index.html')));
 
 app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath,
 }));
 
 app.use(webpackHotMiddleware(compiler));
