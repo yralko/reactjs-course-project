@@ -1,0 +1,8 @@
+.Header {
+  background: linear-gradient(20deg, transparent 30%, skyblue 70%);
+}
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+}

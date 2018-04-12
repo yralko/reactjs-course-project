@@ -1,0 +1,68 @@
+.Input {
+  background-color: rgba(0,0,0,.7);
+  border-bottom: 2px solid #f15364;
+  padding: 0 20px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.Input::placeholder {
+  color: #e8e8e8;
+  font-style: italic;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.inputWrapper:after {
+  content: '↵';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555555;
+  font-size: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.filterParams {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #fff;
+}
+
+.filterParams Button {
+  margin-left: 12px;
+  background-color: lightgray;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.searchButton Button {
+  background-color: #f65260;
+  font-size: 14px;
+  padding: 7px 50px;
+}
+
+Button {
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+}
+
+Button:focus {
+  outline: none;
+}
+
+Button:hover {
+  cursor: poiner;
+}
