@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Header from './app/components/Header/Header';
+import Header from './app/components/Header/Header'
+
 
 if (module.hot) {
   module.hot.accept();
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <h1>Hello JSX 2018</h1>
-        <Header />
+         <Header />
       </div>
     );
   }

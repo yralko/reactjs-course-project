@@ -10,6 +10,7 @@ const compiler = webpack(webpackConfig);
 const app = express();
 const port = 3001;
 
+
 process.env.NODE_ENV = 'development';
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../src/index.html')));

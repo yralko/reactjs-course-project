@@ -19,7 +19,17 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'style-loader', 'css-loader'],
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: 1,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            },
+          },
+        ],
       },
     ],
   },
