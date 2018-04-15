@@ -15,7 +15,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        loader: require.resolve('babel-loader'),
       },
       {
         test: /\.css$/,
