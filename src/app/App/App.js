@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../components/Header/Header';
-import Main from '../containers/Main/Main';
-import Footer from '../components/Footer/Footer';
+import Header from '../components/Header';
+import Main from '../containers/Main';
+import Footer from '../components/Footer';
 import classes from './index.css';
 
 class App extends Component {

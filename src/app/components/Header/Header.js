@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Searchbox from './Searchbox/Searchbox';
+import Searchbox from './Searchbox';
 import Logo from '../Logo/Logo';
 import classes from './index.css';
 

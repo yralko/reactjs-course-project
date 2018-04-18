@@ -9,7 +9,12 @@ const Input = props => {
   const parsedStyles = styles.join(' ');
 
   return (
-    <input className={parsedStyles} type={props.type} placeholder={props.placeholder} />
+    <input
+      className={parsedStyles}
+      onChange={(e) => props.changed(e)}
+      type={props.type}
+      placeholder={props.placeholder}
+    />
   );
 }
 

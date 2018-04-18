@@ -4,7 +4,7 @@ import classes from './index.css';
 
 const Footer = props => {
   return (
-    <footer>
+    <footer className={classes.Footer}>
       <Logo />
     </footer>
   )

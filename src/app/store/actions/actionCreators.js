@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 export const execSearch = (query) => {
   return {
     type: actionTypes.EXEC_SEARCH,
-    query,
+    query: query,
   }
 }
 

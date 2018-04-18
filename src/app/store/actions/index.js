@@ -1,7 +1,9 @@
 export {
-  execSearch
+  execSearch,
+  changeFilter,
 } from './actionCreators';
 
 export {
-  EXEC_SEARCH
+  EXEC_SEARCH,
+  CHANGE_FILTER,
 } from './actionTypes';

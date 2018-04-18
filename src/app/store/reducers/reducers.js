@@ -3,17 +3,20 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   query: null,
   searchFilter: null,
+  searchResults: [],
 }
 
 const execSearch = (state, action) => {
   return {
+    ...state,
     query: action.query,
   }
 }
 
 const changeFilter = (state, action) => {
   return {
-    filter: action.filter,
+    ...state,
+    searchFilter: action.filter,
   }
 }
 
