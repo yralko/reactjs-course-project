@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'production',
@@ -8,27 +8,38 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        loader: require.resolve('babel-loader'),
       },
       {
         test: /\.css$/,
-        use: [miniCssExtractPlugin.loader, "css-loader"]
-      }
-    ]
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+              modules: 1,
+              localIdentName: '[name]__[local]__[hash:base64:5]',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
-    new miniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ]
-}
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+  ],
+};
 
 module.exports = config;
