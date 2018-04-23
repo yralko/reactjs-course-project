@@ -1,10 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { selectFilm } from '../../store/actions'
 import classes from './index.css';
+import SearchResult from './SearchResult';
 
 const SearchResults = props => {
-  return (
-    <div>SearchResults</div>
-  )
+  if (props.fetchedFilms) {
+    return (
+      <div className={classes.SearchResults}>
+        {props.fetchedFilms
+          .map(val => <SearchResult
+            src={val.poster_path}
+            title={val.title}
+            tagline={val.tagline}
+            genres={val.genres}
+            release_date={val.release_date}
+            key={val.id}
+            id={val.id}
+            clicked={(id) => props.selectFilm(id)}
+          />)
+        }
+      </div>
+    )
+  }
+
+  return <p>No films yet</p>;
 }
 
-export default SearchResults;
+const mapStateToProps = (state) => {
+  return {
+    fetchedFilms: state.fetchedFilms,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectFilm: (filmId) => (dispatch(selectFilm(filmId))),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

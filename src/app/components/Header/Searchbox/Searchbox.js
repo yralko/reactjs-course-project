@@ -11,13 +11,13 @@ class Searchbox extends Component {
 
     this.state = {
       searchInputValue: '',
-    }
+    };
   }
 
   getInputValue(e) {
     this.setState({
       searchInputValue: e.target.value,
-    })
+    });
   }
 
   render() {

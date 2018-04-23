@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import ErrorBoundary from '../auxilliary/ErrorBoundary';
+import * as actions from '../store/actions';
 import Header from '../components/Header';
 import Main from '../containers/Main';
 import Footer from '../components/Footer';
-import SearchResult from '../components/SearchResults/SearchResult';
 import classes from './index.css';
 
 class App extends Component {
+
+  componentDidMount() {
+    axios.get('http://react-cdp-api.herokuapp.com/movies/')
+      .then(res => this.props.storeFetchedFilms(res.data.data));
+  }
+
   render() {
     return (
       <div className={classes.App}>
@@ -15,7 +23,6 @@ class App extends Component {
         </ErrorBoundary>
         <ErrorBoundary>
           <Main />
-          <SearchResult />
         </ErrorBoundary>
         <ErrorBoundary>
           <Footer />
@@ -25,4 +32,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    storeFetchedFilms: allFilms => dispatch(actions.storeFetchedFilms(allFilms)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

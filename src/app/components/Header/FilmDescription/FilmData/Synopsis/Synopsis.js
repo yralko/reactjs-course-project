@@ -3,7 +3,7 @@ import classes from './index.css';
 
 const Synopsis = props => {
   return (
-    <div>Synopsis</div>
+    <div>{props.overview}</div>
   )
 }
 
