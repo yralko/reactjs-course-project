@@ -10,33 +10,67 @@ class Searchbox extends Component {
     super(props);
 
     this.state = {
-      searchInputValue: '',
+      filter: 'title',
+      inputValue: '',
     };
   }
 
   getInputValue(e) {
     this.setState({
-      searchInputValue: e.target.value,
+      inputValue: e.target.value,
     });
   }
+
+  searchFilms() {
+    const foundFilms = this.props.fetchedFilms
+    .filter(film => film.title
+      .toLowerCase()
+      .includes(this.state.inputValue
+        .toLowerCase()));
+
+    this.props.searchFilms(foundFilms);
+  };
+
+  keyReleased(e) {
+    if(e.keyCode === 13) {
+      this.searchFilms();
+    }
+  }
+
+
 
   render() {
     return (
       <div>
         <div>
           <h3>Find your movie</h3>
-        <div className={classes.inputWrapper}>
-            <Input type='text' changed={(e) => this.getInputValue(e)} styles={classes.Input} placeholder='Type here...' />
+          <div className={classes.inputWrapper}>
+            <Input
+              type='text'
+              changed={(e) => this.getInputValue(e)}
+              styles={classes.Input}
+              placeholder='Type here...'
+              keyReleased={(e) => this.keyReleased(e)}
+            />
           </div>
         </div>
         <div className={classes.controls}>
           <div className={classes.filterParams}>
             <span>Search by</span>
-            <Button name='Title' clicked={() => this.props.changeFilter('title')}/>
-            <Button name='Director' clicked={() => this.props.changeFilter('director')}/>
+            <Button
+              name='Title'
+              clicked={() => this.setState({filter: 'title'})}
+            />
+            <Button
+              name='Director'
+              clicked={() => this.setState({filter: 'director'})}
+            />
           </div>
           <div className={classes.searchButton}>
-            <Button clicked={() => this.props.execSearch(this.state.searchInputValue)} name='Search' />
+            <Button
+              clicked={() => this.searchFilms()}
+              name='Search'
+            />
           </div>
         </div>
       </div>
@@ -47,13 +81,13 @@ class Searchbox extends Component {
 const mapStateToProps = (state) => {
   return {
     query: state.query,
+    fetchedFilms: state.fetchedFilms,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    execSearch: query => dispatch(actions.execSearch(query)),
-    changeFilter: filter => dispatch(actions.changeFilter(filter)),
+    searchFilms: films => dispatch(actions.searchFilms(films)),
   };
 };
 

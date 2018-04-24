@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FilmData from './FilmData';
 import FilmPoster from './FilmPoster';
 import classes from './index.css';
+import * as actions from '../../../store/actions';
 
 class FilmDescription extends Component {
   constructor(props) {
@@ -10,9 +11,10 @@ class FilmDescription extends Component {
   }
 
   render() {
-    let renderedContent = null;
+    let renderedContent;
     if (this.props.fetchedFilms) {
-      const currentFilm = this.props.fetchedFilms.filter(val => val.id === this.props.selectedFilm)[0];
+      const currentFilm = this.props.fetchedFilms
+        .filter(val => val.id === this.props.selectedFilmId)[0];
       renderedContent = (
         <div className={classes.FilmDescription}>
           <FilmPoster src={currentFilm.poster_path} />
@@ -32,6 +34,7 @@ class FilmDescription extends Component {
 
     return(
       <div>
+        <button onClick={() => this.props.returnToSearchbox()}>Return to searbox</button>
         {renderedContent}
       </div>
     )
@@ -40,9 +43,15 @@ class FilmDescription extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    selectedFilm: state.selectedFilm,
+    selectedFilmId: state.selectedFilmId,
     fetchedFilms: state.fetchedFilms,
   };
 };
 
-export default connect(mapStateToProps)(FilmDescription);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    returnToSearchbox: () => dispatch(actions.returnToSearchbox()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilmDescription);

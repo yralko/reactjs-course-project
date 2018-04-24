@@ -4,7 +4,9 @@ const initialState = {
   query: null,
   searchFilter: null,
   fetchedFilms: [],
-  selectedFilm: 412302,
+  foundFilms: [],
+  filmSelected: false,
+  selectedFilmId: '',
 };
 
 const execSearch = (state, action) => {
@@ -31,9 +33,24 @@ const storeFetchedFilms = (state, action) => {
 const selectFilm = (state, action) => {
   return {
     ...state,
-    selectedFilm: action.filmId,
+    selectedFilmId: action.filmId,
+    filmSelected: true,
   };
 };
+
+export const searchFilms = (state, action) => {
+  return {
+    ...state,
+    foundFilms: action.foundFilms,
+  };
+};
+
+const returnToSearchbox = (state, action) => {
+  return {
+    ...state,
+    filmSelected: false,
+  }
+}
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
@@ -41,6 +58,8 @@ const reducers = (state = initialState, action) => {
     case actionTypes.CHANGE_FILTER: return changeFilter(state, action);
     case actionTypes.STORE_FETCHED_FILMS: return storeFetchedFilms(state, action);
     case actionTypes.SELECT_FILM: return selectFilm(state, action);
+    case actionTypes.SEARCH_FILMS: return searchFilms(state, action);
+    case actionTypes.RETURN_TO_SEARCHBOX: return returnToSearchbox(state, action);
     default: return state;
   }
 };

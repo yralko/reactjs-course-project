@@ -5,10 +5,10 @@ import classes from './index.css';
 import SearchResult from './SearchResult';
 
 const SearchResults = props => {
-  if (props.fetchedFilms) {
+  if (props.foundFilms) {
     return (
       <div className={classes.SearchResults}>
-        {props.fetchedFilms
+        {props.foundFilms
           .map(val => <SearchResult
             src={val.poster_path}
             title={val.title}
@@ -17,11 +17,11 @@ const SearchResults = props => {
             release_date={val.release_date}
             key={val.id}
             id={val.id}
-            clicked={(id) => props.selectFilm(id)}
+            clicked={() => props.selectFilm(val.id)}
           />)
         }
       </div>
-    )
+    );
   }
 
   return <p>No films yet</p>;
@@ -29,7 +29,7 @@ const SearchResults = props => {
 
 const mapStateToProps = (state) => {
   return {
-    fetchedFilms: state.fetchedFilms,
+    foundFilms: state.foundFilms,
   };
 };
 

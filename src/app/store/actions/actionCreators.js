@@ -28,3 +28,16 @@ export const selectFilm = (filmId) => {
     filmId,
   };
 };
+
+export const searchFilms = (foundFilms) => {
+  return {
+    type: actionTypes.SEARCH_FILMS,
+    foundFilms,
+  };
+};
+
+export const returnToSearchbox = () => {
+  return {
+    type: actionTypes.RETURN_TO_SEARCHBOX,
+  }
+}
