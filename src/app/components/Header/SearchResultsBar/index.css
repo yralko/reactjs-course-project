@@ -1,0 +1,13 @@
+.sortOptions {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 5px;
+  background-color: skyblue;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.sortOptions:hover {
+  cursor: pointer;
+}

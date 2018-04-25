@@ -7,6 +7,7 @@ const initialState = {
   foundFilms: [],
   filmSelected: false,
   selectedFilmId: '',
+  sortParameter: 'release_date',
 };
 
 const execSearch = (state, action) => {
@@ -49,8 +50,15 @@ const returnToSearchbox = (state, action) => {
   return {
     ...state,
     filmSelected: false,
-  }
-}
+  };
+};
+
+const sortFilms = (state, action) => {
+  return {
+    ...state,
+    sortParameter: action.sortParameter,
+  };
+};
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
@@ -60,6 +68,7 @@ const reducers = (state = initialState, action) => {
     case actionTypes.SELECT_FILM: return selectFilm(state, action);
     case actionTypes.SEARCH_FILMS: return searchFilms(state, action);
     case actionTypes.RETURN_TO_SEARCHBOX: return returnToSearchbox(state, action);
+    case actionTypes.SORT_FILMS: return sortFilms(state, action);
     default: return state;
   }
 };

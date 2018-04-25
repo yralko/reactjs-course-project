@@ -39,5 +39,12 @@ export const searchFilms = (foundFilms) => {
 export const returnToSearchbox = () => {
   return {
     type: actionTypes.RETURN_TO_SEARCHBOX,
-  }
-}
+  };
+};
+
+export const sortFilms = (sortParameter) => {
+  return {
+    type: actionTypes.SORT_FILMS,
+    sortParameter,
+  };
+};

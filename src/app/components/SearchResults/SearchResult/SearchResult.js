@@ -4,7 +4,6 @@ import Poster from './Poster';
 import classes from './index.css';
 
 const SearchResult = (props) => {
-  console.log(props);
   return (
     <div
       className={classes.SearchResult}
