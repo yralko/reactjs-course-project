@@ -12,7 +12,7 @@ const SearchResultsBar = (props) => {
       <div className="sort-options">
         <span>Sort by </span>
       <span className={classes.sortOptions} onClick={() => props.sortFilms('release_date')}>release date </span>
-        <span className={classes.sortOptions} onClick={() => props.sortFilms('title')}>rating</span>
+    <span className={classes.sortOptions} onClick={() => props.sortFilms('vote_average')}>rating</span>
       </div>
     </div>
   )
