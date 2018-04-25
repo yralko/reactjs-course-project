@@ -12,7 +12,7 @@ class SearchResults extends Component {
 
   sortFilms(films, criterion) {
     return [].concat(films).sort((a,b) => {
-      if( a[criterion].toLowerCase() > b[criterion].toLowerCase() ) {
+      if( a[criterion] > b[criterion]) {
         return 1;
       } else {
         return 0;
@@ -21,7 +21,7 @@ class SearchResults extends Component {
   }
 
   render() {
-    if (this.props.foundFilms) {
+    if (this.props.foundFilms.length) {
       const sortedFilms = this.sortFilms(this.props.foundFilms, this.props.sortParameter);
 
       return (
@@ -40,9 +40,9 @@ class SearchResults extends Component {
           }
         </div>
       );
+    } else {
+      return <p>No films yet</p>;
     }
-
-    return <p>No films yet</p>;
   };
 }
 
