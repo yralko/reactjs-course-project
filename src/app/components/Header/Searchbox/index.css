@@ -29,6 +29,7 @@
 
 .controls {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-top: 20px;
   margin-bottom: 40px;
@@ -68,5 +69,9 @@ Button:hover {
 }
 
 .filterParams Button.active {
-  background-color: red;
+  background-color: #f65260;
+}
+
+.title {
+  color: #fff;
 }

@@ -1,12 +1,15 @@
 .SearchResults {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   grid-gap: 35px 60px;
-  margin: 30px;
+  margin: 50px auto;
+  width: 70%;
 }
 
 .noResults {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 40px;
 }

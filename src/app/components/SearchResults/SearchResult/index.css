@@ -1,7 +1,11 @@
 .SearchResult {
-  width: 150px;
+  width: 250px;
+  padding: 10px;
+  background-color: transparent;
+  transition: all .2s;
 }
 
 .SearchResult:hover {
   cursor: pointer;
+  background-color: rgba(0,0,0,0.05);
 }

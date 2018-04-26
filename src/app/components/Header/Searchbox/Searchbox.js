@@ -42,7 +42,7 @@ class Searchbox extends Component {
     return (
       <div>
         <div>
-          <h3>Find your movie</h3>
+          <h2 className={classes.title}>Find your movie</h2>
           <div className={classes.inputWrapper}>
             <Input
               type='text'

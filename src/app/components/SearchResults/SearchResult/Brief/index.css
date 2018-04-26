@@ -1,0 +1,29 @@
+.Brief {
+  padding: 7px;
+}
+
+.upperRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.upperRow > * {
+  margin: 5px 0;
+}
+
+.upperRow .title {
+  text-transform: uppercase;
+}
+
+.upperRow .date {
+  padding: 2px 5px;
+  font-size: 11px;
+  border: 1px solid #c5c5c5;
+  border-radius: 10%;
+}
+
+.genres {
+  font-size: 12px;
+  margin-top: 5px;
+}

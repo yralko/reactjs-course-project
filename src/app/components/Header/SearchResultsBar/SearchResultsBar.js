@@ -7,16 +7,26 @@ const SearchResultsBar = (props) => {
   return (
     <div className={classes.SearchResultsBar}>
       <div className="total-found">
-        {props.foundFilms.length} {props.foundFilms.length === 1 ? 'film' : 'films'} found.
+        <span>{props.foundFilms.length} {props.foundFilms.length === 1 ? 'film' : 'films'} found</span>
       </div>
       <div className="sort-options">
         <span>Sort by </span>
-      <button className={classes.sortOptions} onClick={() => props.sortFilms('release_date')}>release date </button>
-      <button className={classes.sortOptions} onClick={() => props.sortFilms('vote_average')}>rating</button>
+        <button
+          className={classes.sortOptions}
+          onClick={() => props.sortFilms('release_date')}
+        >
+            release date
+        </button>
+        <button
+          className={classes.sortOptions}
+          onClick={() => props.sortFilms('vote_average')}
+        >
+            rating
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

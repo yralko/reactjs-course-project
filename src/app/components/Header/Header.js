@@ -16,11 +16,13 @@ const Header = (props) => {
 
   return (
     <div className={classes.Header}>
-      <div className={classes.wrapper}>
-        <Logo />
-        {headerContent}
+      <div className={classes.overlay}>
+        <div className={classes.wrapper}>
+          <Logo />
+          {headerContent}
+        </div>
+        {!props.initialPage && !props.filmSelected && <SearchResultsBar />}
       </div>
-      {!props.initialPage && !props.filmSelected && <SearchResultsBar />}
     </div>
   );
 }

@@ -43,7 +43,7 @@ class SearchResults extends Component {
     } else {
       return (
         <div className={classes.noResults}>
-          <p>No films yet</p>
+          <p>No films found</p>
         </div>
       )
     }

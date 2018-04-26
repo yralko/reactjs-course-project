@@ -1,5 +1,12 @@
 .Header {
-  background: #414141;
+  position: relative;
+  background-image: url('/assets/banner.jpg');
+  background-size: contain;
+}
+
+.overlay {
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .wrapper {

@@ -34,7 +34,7 @@ class FilmDescription extends Component {
 
     return(
       <div>
-        <button onClick={() => this.props.returnToSearchbox()}>Return to searbox</button>
+        <button className={classes.returnToSearch} onClick={() => this.props.returnToSearchbox()}>Search</button>
         {renderedContent}
       </div>
     )

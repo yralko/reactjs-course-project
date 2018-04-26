@@ -14,7 +14,8 @@ process.env.NODE_ENV = 'development';
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../src/index.html')));
 
-app.use(express.static('../dist/public'));
+app.use('/assets', express.static(path.join(__dirname, '../dist/public')));
+
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,

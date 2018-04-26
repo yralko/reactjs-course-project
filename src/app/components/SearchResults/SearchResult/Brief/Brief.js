@@ -3,10 +3,12 @@ import classes from './index.css';
 
 const Brief = props => {
   return (
-    <div>
-      <h3>{props.filmTitle}</h3>
-      <p>{props.genres}</p>
-      <p>{props.date}</p>
+    <div className={classes.Brief}>
+      <div className={classes.upperRow}>
+        <h4 className={classes.title}>{props.filmTitle}</h4>
+      <span className={classes.date}>{props.date}</span>
+      </div>
+      <p className={classes.genres}>{props.genres}</p>
     </div>
   )
 }
