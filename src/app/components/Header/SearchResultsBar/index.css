@@ -1,11 +1,23 @@
+.SearchResultsBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px 15%;
+  background-color: #eeeeee;
+}
+
 .sortOptions {
   display: inline-block;
   padding: 5px;
   margin: 0 5px;
-  background-color: skyblue;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
+  color: black;
+  border: none;
+  background-color: transparent;
+}
+
+.sortOptions.active {
+  color: red;
 }
 
 .sortOptions:hover {

@@ -1,3 +1,7 @@
 .SearchResult {
   width: 150px;
 }
+
+.SearchResult:hover {
+  cursor: pointer;
+}

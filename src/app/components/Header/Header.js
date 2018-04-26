@@ -20,7 +20,7 @@ const Header = (props) => {
         <Logo />
         {headerContent}
       </div>
-      {!props.initialPage && <SearchResultsBar />}
+      {!props.initialPage && !props.filmSelected && <SearchResultsBar />}
     </div>
   );
 }
