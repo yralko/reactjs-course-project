@@ -24,6 +24,7 @@ class FilmDescription extends Component {
             duration: currentFilm.runtime,
             overview: currentFilm.overview,
             rating: currentFilm.vote_average,
+            genres: currentFilm.genres,
           }}
           />
         </div>
