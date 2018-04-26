@@ -21,9 +21,10 @@ class Searchbox extends Component {
     });
   }
 
-  searchFilms() {
+  searchFilms(criterion) {
     const foundFilms = this.props.fetchedFilms
-    .filter(film => film.title
+    .filter(film => film[criterion]
+      .toString()
       .toLowerCase()
       .includes(this.state.inputValue
         .toLowerCase()));
@@ -33,11 +34,9 @@ class Searchbox extends Component {
 
   keyReleased(e) {
     if(e.keyCode === 13) {
-      this.searchFilms();
+      this.searchFilms(this.state.filter);
     }
   }
-
-
 
   render() {
     return (
@@ -60,15 +59,17 @@ class Searchbox extends Component {
             <Button
               name='Title'
               clicked={() => this.setState({filter: 'title'})}
+              className={this.state.filter === 'title' ? classes.active : null}
             />
             <Button
-              name='Director'
-              clicked={() => this.setState({filter: 'director'})}
+              name='Genre'
+              clicked={() => this.setState({filter: 'genres'})}
+              className={this.state.filter === 'genres' ? classes.active : null}
             />
           </div>
           <div className={classes.searchButton}>
             <Button
-              clicked={() => this.searchFilms()}
+              clicked={() => this.searchFilms(this.state.filter)}
               name='Search'
             />
           </div>

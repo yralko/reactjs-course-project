@@ -66,3 +66,7 @@ Button:focus {
 Button:hover {
   cursor: poiner;
 }
+
+.filterParams Button.active {
+  background-color: red;
+}
