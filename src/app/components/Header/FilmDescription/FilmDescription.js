@@ -5,20 +5,20 @@ import FilmPoster from './FilmPoster';
 import classes from './index.css';
 import * as actions from '../../../store/actions';
 
-class FilmDescription extends Component {
-  constructor(props) {
-    super(props);
-  }
+const FilmDescription = (props) => {
+  let renderedContent;
 
-  render() {
-    let renderedContent;
-    if (this.props.fetchedFilms) {
-      const currentFilm = this.props.fetchedFilms
-        .filter(val => val.id === this.props.selectedFilmId)[0];
-      renderedContent = (
-        <div className={classes.FilmDescription}>
-          <FilmPoster src={currentFilm.poster_path} />
-          <FilmData filmData={{
+  if (props.fetchedFilms) {
+    const currentFilm = props.fetchedFilms
+      .filter(val => val.id === props.selectedFilmId)[0];
+
+    renderedContent = (
+      <div className={classes.FilmDescription}>
+        <FilmPoster
+          src={currentFilm.poster_path}
+        />
+        <FilmData
+          filmData={{
             title: currentFilm.title,
             release_date: currentFilm.release_date,
             duration: currentFilm.runtime,
@@ -26,21 +26,25 @@ class FilmDescription extends Component {
             rating: currentFilm.vote_average,
             genres: currentFilm.genres,
           }}
-          />
-        </div>
-      );
-    } else {
-      renderedContent = <p>Loading ...</p>;
-    }
-
-    return(
-      <div>
-        <button className={classes.returnToSearch} onClick={() => this.props.returnToSearchbox()}>Search</button>
-        {renderedContent}
+        />
       </div>
-    )
+    );
+  } else {
+    renderedContent = <p>Loading ...</p>;
   }
-}
+
+  return (
+    <div>
+      <button
+        className={classes.returnToSearch}
+        onClick={() => props.returnToSearchbox()}
+      >
+        Search
+      </button>
+      {renderedContent}
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -52,7 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     returnToSearchbox: () => dispatch(actions.returnToSearchbox()),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilmDescription);

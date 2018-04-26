@@ -23,17 +23,17 @@ class Searchbox extends Component {
 
   searchFilms(criterion) {
     const foundFilms = this.props.fetchedFilms
-    .filter(film => film[criterion]
-      .toString()
-      .toLowerCase()
-      .includes(this.state.inputValue
-        .toLowerCase()));
+      .filter(film => film[criterion]
+        .toString()
+        .toLowerCase()
+        .includes(this.state.inputValue
+          .toLowerCase()));
 
     this.props.searchFilms(foundFilms);
-  };
+  }
 
   keyReleased(e) {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       this.searchFilms(this.state.filter);
     }
   }
@@ -45,11 +45,11 @@ class Searchbox extends Component {
           <h2 className={classes.title}>Find your movie</h2>
           <div className={classes.inputWrapper}>
             <Input
-              type='text'
-              changed={(e) => this.getInputValue(e)}
+              type="text"
+              changed={e => this.getInputValue(e)}
               styles={classes.Input}
-              placeholder='Type here...'
-              keyReleased={(e) => this.keyReleased(e)}
+              placeholder="Type here..."
+              keyReleased={e => this.keyReleased(e)}
             />
           </div>
         </div>
@@ -57,25 +57,25 @@ class Searchbox extends Component {
           <div className={classes.filterParams}>
             <span>Search by</span>
             <Button
-              name='Title'
-              clicked={() => this.setState({filter: 'title'})}
+              name="Title"
+              clicked={() => this.setState({ filter: 'title' })}
               className={this.state.filter === 'title' ? classes.active : null}
             />
             <Button
-              name='Genre'
-              clicked={() => this.setState({filter: 'genres'})}
+              name="Genre"
+              clicked={() => this.setState({ filter: 'genres' })}
               className={this.state.filter === 'genres' ? classes.active : null}
             />
           </div>
           <div className={classes.searchButton}>
             <Button
               clicked={() => this.searchFilms(this.state.filter)}
-              name='Search'
+              name="Search"
             />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

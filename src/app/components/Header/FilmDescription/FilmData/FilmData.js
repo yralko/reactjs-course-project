@@ -3,8 +3,9 @@ import Brief from './Brief';
 import Synopsis from './Synopsis';
 import classes from './index.css';
 
-const FilmData = props => {
-  const filmData = props.filmData;
+const FilmData = (props) => {
+  const { filmData } = props;
+
   return (
     <div className={classes.FilmData}>
       <Brief
@@ -13,10 +14,10 @@ const FilmData = props => {
         year={filmData.release_date}
         duration={filmData.duration}
         genres={filmData.genres}
-       />
+      />
       <Synopsis overview={filmData.overview} />
     </div>
-  )
-}
+  );
+};
 
 export default FilmData;

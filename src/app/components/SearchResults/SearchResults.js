@@ -14,7 +14,7 @@ class SearchResults extends Component {
     return [].concat(films).sort((a,b) => {
       if( a[criterion] > b[criterion]) {
         return 1;
-      }
+    }
 
       return 0;
     });
