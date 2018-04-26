@@ -4,3 +4,9 @@
   grid-gap: 35px 60px;
   margin: 30px;
 }
+
+.noResults {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

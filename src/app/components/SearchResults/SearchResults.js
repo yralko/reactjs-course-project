@@ -41,7 +41,11 @@ class SearchResults extends Component {
         </div>
       );
     } else {
-      return <p>No films yet</p>;
+      return (
+        <div className={classes.noResults}>
+          <p>No films yet</p>
+        </div>
+      )
     }
   };
 }

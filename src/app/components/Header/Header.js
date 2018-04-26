@@ -20,7 +20,7 @@ const Header = (props) => {
         <Logo />
         {headerContent}
       </div>
-      <SearchResultsBar />
+      {!props.initialPage && <SearchResultsBar />}
     </div>
   );
 }
@@ -28,6 +28,7 @@ const Header = (props) => {
 const mapStateToProps = (state) => {
   return {
     filmSelected: state.filmSelected,
+    initialPage: state.initialPage,
   };
 };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchResults from '../../components/SearchResults';
+import classes from './index.css';
 
 class Main extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Main extends Component {
     }
 
     return (
-      <div style={{flex: 1}}>
+      <div className={classes.Main}>
         {renderedContent}
       </div>
     )

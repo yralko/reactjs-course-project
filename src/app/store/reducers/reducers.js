@@ -8,6 +8,7 @@ const initialState = {
   filmSelected: false,
   selectedFilmId: '',
   sortParameter: 'release_date',
+  initialPage: true,
 };
 
 const execSearch = (state, action) => {
@@ -43,6 +44,7 @@ export const searchFilms = (state, action) => {
   return {
     ...state,
     foundFilms: action.foundFilms,
+    initialPage: false,
   };
 };
 
