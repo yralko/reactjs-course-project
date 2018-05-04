@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SearchResults from '../../components/SearchResults';
 import classes from './index.css';
 
-const Main = (props) => {
+export const Main = (props) => {
   let renderedContent;
 
   if (props.fetchedFilms) {

@@ -8,10 +8,10 @@ import Main from '../containers/Main';
 import Footer from '../components/Footer';
 import classes from './index.css';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount() {
-    axios.get('http://react-cdp-api.herokuapp.com/movies/')
+    axios.get('http://react-cdp-api.herokuapp.com/movies?sortOrder=asc&search=Drama&searchBy=genres&limit=100')
       .then(res => this.props.storeFetchedFilms(res.data.data));
   }
 
