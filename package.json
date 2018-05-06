@@ -13,7 +13,7 @@
     "start": "node ./buildScripts/server.js",
     "build": "webpack --config webpack.prod.config.js --mode=production",
     "lint": "eslint .",
-    "test": "jest --watch --coverage"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",

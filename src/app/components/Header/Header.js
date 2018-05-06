@@ -6,7 +6,7 @@ import SearchResultsBar from './SearchResultsBar';
 import Logo from '../Logo/Logo';
 import classes from './index.css';
 
-const Header = (props) => {
+export const Header = (props) => {
   let headerContent = null;
   if (!props.filmSelected) {
     headerContent = <Searchbox />;
