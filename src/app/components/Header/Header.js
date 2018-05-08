@@ -27,7 +27,7 @@ export const Header = (props) => {
   );
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     filmSelected: state.filmSelected,
     initialPage: state.initialPage,

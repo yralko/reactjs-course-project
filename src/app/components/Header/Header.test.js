@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header } from './Header';
+import { Header, mapStateToProps } from './Header';
 import SearchResultsBar from './SearchResultsBar';
 import Searchbox from './Searchbox';
 import FilmDescription from './FilmDescription';
@@ -25,5 +25,20 @@ describe('Header', () => {
   it('renders FilmDescription if a film is selected', () => {
     wrapper.setProps({ filmSelected: true });
     expect(wrapper.find(FilmDescription).exists()).toBe(true);
+  });
+
+  describe('mapStateToProps', () =>  {
+    const mockInitialState = {
+      filmSelected: true,
+      initialPage: false,
+    };
+
+    it('returns filmSelected', () => {
+      expect(mapStateToProps(mockInitialState).filmSelected).toBe(true);
+    });
+
+    it('returns initialPage', () => {
+      expect(mapStateToProps(mockInitialState).initialPage).toBe(false);
+    });
   });
 });

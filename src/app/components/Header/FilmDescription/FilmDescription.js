@@ -1,59 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import FilmData from './FilmData';
-import FilmPoster from './FilmPoster';
+import Loader from '../../Loader';
+import CurrentFilm from './CurrentFilm';
 import classes from './index.css';
 import * as actions from '../../../store/actions';
 
-const FilmDescription = (props) => {
-  let renderedContent;
+export const FilmDescription = props => (
+  <div>
+    <button
+      className={classes.returnToSearch}
+      onClick={() => props.returnToSearchbox()}
+    >
+      Search
+    </button>
+    { props.fetchedFilms ? <CurrentFilm /> : <Loader /> }
+  </div>
+);
 
-  if (props.fetchedFilms) {
-    const currentFilm = props.fetchedFilms
-      .filter(val => val.id === props.selectedFilmId)[0];
+export const test = 213;
 
-    renderedContent = (
-      <div className={classes.FilmDescription}>
-        <FilmPoster
-          src={currentFilm.poster_path}
-        />
-        <FilmData
-          filmData={{
-            title: currentFilm.title,
-            release_date: currentFilm.release_date,
-            duration: currentFilm.runtime,
-            overview: currentFilm.overview,
-            rating: currentFilm.vote_average,
-            genres: currentFilm.genres,
-          }}
-        />
-      </div>
-    );
-  } else {
-    renderedContent = <p>Loading ...</p>;
-  }
-
-  return (
-    <div>
-      <button
-        className={classes.returnToSearch}
-        onClick={() => props.returnToSearchbox()}
-      >
-        Search
-      </button>
-      {renderedContent}
-    </div>
-  );
-};
-
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
-    selectedFilmId: state.selectedFilmId,
     fetchedFilms: state.fetchedFilms,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     returnToSearchbox: () => dispatch(actions.returnToSearchbox()),
   };
