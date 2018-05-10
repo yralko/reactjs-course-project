@@ -5,19 +5,13 @@ import { Component } from 'react';
 import classes from './index.css';
 import SearchResult from './SearchResult';
 
-class SearchResults extends Component {
+export class SearchResults extends Component {
   constructor(props) {
     super(props);
   }
 
   sortFilms(films, criterion) {
-    return [].concat(films).sort((a,b) => {
-      if( a[criterion] > b[criterion]) {
-        return 1;
-    }
-
-      return 0;
-    });
+    return [].concat(films).sort((a,b) =>  a[criterion].localeCompare(b[criterion]));
   }
 
   render() {
@@ -50,14 +44,14 @@ class SearchResults extends Component {
   };
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     foundFilms: state.foundFilms,
     sortParameter: state.sortParameter,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     selectFilm: filmId => (dispatch(selectFilm(filmId))),
   };
