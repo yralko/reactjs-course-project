@@ -39,8 +39,6 @@ describe('<Filmdescription />', () => {
     const dispatch  = jest.fn();
     mapDispatchToProps(dispatch).returnToSearchbox();
 
-    expect(dispatch .mock.calls[0][0].type).toBe('RETURN_TO_SEARCHBOX');
+    expect(dispatch.mock.calls[0][0].type).toBe('RETURN_TO_SEARCHBOX');
   })
-
-
 });

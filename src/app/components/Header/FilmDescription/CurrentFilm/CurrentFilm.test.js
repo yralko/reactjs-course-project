@@ -12,7 +12,7 @@ describe('<CurrentFilm />', () => {
   }
 
   beforeEach(() => {
-    wrapper = shallow(<CurrentFilm fetchedFilms={mockInitialState.fetchedFilms } />);
+    wrapper = shallow(<CurrentFilm fetchedFilms={mockInitialState.fetchedFilms} />);
   });
 
   it('renders FilmData', () => {

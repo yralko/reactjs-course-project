@@ -5,7 +5,7 @@ import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 import classes from './index.css';
 
-class Searchbox extends Component {
+export class Searchbox extends Component {
   constructor(props) {
     super(props);
 
@@ -79,14 +79,13 @@ class Searchbox extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
-    query: state.query,
     fetchedFilms: state.fetchedFilms,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     searchFilms: films => dispatch(actions.searchFilms(films)),
   };

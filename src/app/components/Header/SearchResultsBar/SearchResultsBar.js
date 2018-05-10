@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import * as actions from '../../../store/actions';
 import classes from './index.css';
 
-const SearchResultsBar = props => (
+export const SearchResultsBar = props => (
   <div className={classes.SearchResultsBar}>
     <div className="total-found">
       <span>{props.foundFilms.length} {props.foundFilms.length === 1 ? 'film' : 'films'} found</span>
     </div>
-    <div className="sort-options">
+    <div className="classes.sort-options">
       <span>Sort by </span>
       <button
         className={classes.sortOptions}
@@ -26,13 +26,13 @@ const SearchResultsBar = props => (
   </div>
 );
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     foundFilms: state.foundFilms,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     sortFilms: sortParameter => dispatch(actions.sortFilms(sortParameter)),
   };
