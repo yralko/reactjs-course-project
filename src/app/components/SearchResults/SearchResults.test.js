@@ -5,12 +5,22 @@ import SearchResult from './SearchResult';
 
 describe('<SearchResults />', () => {
   const mockState = {
-    foundFilms: [{title: 'film3'}, {title: 'film2'}, {title: 'film1'}, {title: 'film4'}, {title: 'film5'}],
+    foundFilms: [
+      { title: 'film3' },
+      { title: 'film2' },
+      { title: 'film1' },
+      { title: 'film4' },
+      { title: 'film5' },
+    ],
     sortParameter: 'title',
   }
 
   it('renders a list of films', () => {
-    const wrapper = shallow(<SearchResults foundFilms={mockState.foundFilms} sortParameter={mockState.sortParameter}/>);
+    const wrapper = shallow(<SearchResults
+      foundFilms={mockState.foundFilms}
+      sortParameter={mockState.sortParameter}
+    />);
+
     expect(wrapper.find(SearchResult)).toHaveLength(5);
   });
 

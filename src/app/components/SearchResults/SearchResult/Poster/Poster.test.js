@@ -6,5 +6,5 @@ describe('<Poster />', () => {
   it('renders an image', () => {
     const wrapper = shallow(<Poster />)
     expect(wrapper.containsMatchingElement(<img />)).toBe(true);
-  })
+  });
 })
