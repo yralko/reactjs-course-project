@@ -19,7 +19,7 @@ export const Main = (props) => {
   );
 };
 
-const mapStateToProps = (store) => {
+export const mapStateToProps = (store) => {
   return {
     fetchedFilms: store.fetchedFilms,
   };
