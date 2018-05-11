@@ -8,7 +8,7 @@ describe('<FilmData />', () => {
   const mockInitialState = {
     title: 'mock',
     rating: 999,
-    year: 2018,
+    year: '2018-10-23',
     duration: 100,
     genres: 'drama',
     overview: 'overview',

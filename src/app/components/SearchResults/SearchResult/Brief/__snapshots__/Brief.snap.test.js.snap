@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <h4
+      className={undefined}
+    />
+    <span
+      className={undefined}
+    />
+  </div>
+  <p
+    className={undefined}
+  />
+</div>
+`;

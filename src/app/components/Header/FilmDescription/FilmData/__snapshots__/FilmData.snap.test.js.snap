@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className={undefined}
+  >
+    <div
+      className={undefined}
+    >
+      <h2>
+        Film name 
+        mock
+      </h2>
+      <span
+        className={undefined}
+      >
+        999
+      </span>
+    </div>
+    <p
+      className={undefined}
+    >
+      dram & a
+    </p>
+    <div
+      className={undefined}
+    >
+      <span>
+        2018
+      </span>
+      <span>
+        100
+         min
+      </span>
+    </div>
+  </div>
+  <p
+    className={undefined}
+  >
+    overview
+  </p>
+</div>
+`;

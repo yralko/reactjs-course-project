@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className={undefined}
+  onClick={[Function]}
+>
+  <div
+    className={undefined}
+  >
+    <img
+      alt="undefined: undefined"
+      src={undefined}
+    />
+  </div>
+  <div
+    className={undefined}
+  >
+    <div
+      className={undefined}
+    >
+      <h4
+        className={undefined}
+      />
+      <span
+        className={undefined}
+      >
+        2018
+      </span>
+    </div>
+    <p
+      className={undefined}
+    >
+      drama, action & thriller
+    </p>
+  </div>
+</div>
+`;
