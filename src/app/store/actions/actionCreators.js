@@ -1,50 +1,28 @@
 import * as actionTypes from './actionTypes';
+import axios from 'axios';
 
-export const execSearch = (query) => {
+export const receiveFilms = (films) => {
   return {
-    type: actionTypes.EXEC_SEARCH,
-    query,
+    type: actionTypes.RECEIVE_FILMS,
+    films,
   };
 };
 
-export const changeFilter = (filter) => {
+export const updateSearchParams = params => (dispatch) => {
+  axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
+    .then(res => dispatch(receiveFilms(res.data)));
+};
+
+export const changeSortingCriterion = (criterion) => {
   return {
-    type: actionTypes.CHANGE_FILTER,
-    filter,
+    type: actionTypes.CHANGE_SORTING_CRITERION,
+    criterion,
   };
 };
 
-
-export const storeFetchedFilms = (allFilms) => {
+export const changeSortOrder = (order) => {
   return {
-    type: actionTypes.STORE_FETCHED_FILMS,
-    allFilms,
-  };
-};
-
-export const selectFilm = (filmId) => {
-  return {
-    type: actionTypes.SELECT_FILM,
-    filmId,
-  };
-};
-
-export const searchFilms = (foundFilms) => {
-  return {
-    type: actionTypes.SEARCH_FILMS,
-    foundFilms,
-  };
-};
-
-export const returnToSearchbox = () => {
-  return {
-    type: actionTypes.RETURN_TO_SEARCHBOX,
-  };
-};
-
-export const sortFilms = (sortParameter) => {
-  return {
-    type: actionTypes.SORT_FILMS,
-    sortParameter,
+    type: actionTypes.CHANGE_SORT_ORDER,
+    order,
   };
 };

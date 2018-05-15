@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import App from './app/App/App';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import Searchbox from './app/components/Header/Searchbox';
 import reducers from './app/store/reducers/reducers';
 import './index.css';
 
@@ -10,12 +12,12 @@ if (module.hot) {
   module.hot.accept();
 }
 
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 const app = (
   <Provider store={store}>
-    <App />
+    <Searchbox />
   </Provider>
-)
+);
 
 ReactDOM.render(app, document.getElementById('root'));
