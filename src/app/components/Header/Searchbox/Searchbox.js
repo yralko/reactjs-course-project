@@ -21,21 +21,24 @@ export class Searchbox extends Component {
     });
   }
 
-  searchFilms(criterion) {
-    const foundFilms = this.props.fetchedFilms
-      .filter(film => film[criterion]
-        .toString()
-        .toLowerCase()
-        .includes(this.state.inputValue
-          .toLowerCase()));
-
-    this.props.searchFilms(foundFilms);
-  }
-
   keyReleased(e) {
     if (e.keyCode === 13) {
-      this.searchFilms(this.state.filter);
+      this.updateSearchParams();
     }
+  }
+
+  updateSearchParams() {
+    if (!this.state.inputValue) return;
+
+    const params = Object.entries(this.state)
+      .map(val => `${val[0]}=${val[1]}`)
+      .join('&');
+
+  //  this.props.updateSearchParams(params);
+
+    this.setState({
+      inputValue: '',
+    });
   }
 
   render() {
@@ -46,9 +49,10 @@ export class Searchbox extends Component {
           <div className={classes.inputWrapper}>
             <Input
               type="text"
-              changed={e => this.getInputValue(e)}
-              styles={classes.Input}
+              value={this.state.inputValue}
               placeholder="Type here..."
+              styles={classes.Input}
+              changed={e => this.getInputValue(e)}
               keyReleased={e => this.keyReleased(e)}
             />
           </div>
@@ -69,7 +73,7 @@ export class Searchbox extends Component {
           </div>
           <div className={classes.searchButton}>
             <Button
-              clicked={() => this.searchFilms(this.state.filter)}
+              clicked={() => this.updateSearchParams()}
               name="Search"
             />
           </div>
@@ -79,16 +83,10 @@ export class Searchbox extends Component {
   }
 }
 
-export const mapStateToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchedFilms: state.fetchedFilms,
+    //updateSearchParams: params => dispatch(actions.updateSearchParams(params)),
   };
 };
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    searchFilms: films => dispatch(actions.searchFilms(films)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbox);
+export default connect(null, mapDispatchToProps)(Searchbox);

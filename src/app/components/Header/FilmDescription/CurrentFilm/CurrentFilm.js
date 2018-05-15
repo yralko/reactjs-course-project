@@ -31,11 +31,4 @@ export const CurrentFilm = (props) => {
   return null;
 };
 
-export const mapStateToProps = (state) => {
-  return {
-    selectedFilmId: state.selectedFilmId,
-    fetchedFilms: state.fetchedFilms,
-  };
-};
-
 export default connect(mapStateToProps)(CurrentFilm);

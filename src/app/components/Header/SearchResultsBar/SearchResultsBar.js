@@ -26,16 +26,4 @@ export const SearchResultsBar = props => (
   </div>
 );
 
-export const mapStateToProps = (state) => {
-  return {
-    foundFilms: state.foundFilms,
-  };
-};
-
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    sortFilms: sortParameter => dispatch(actions.sortFilms(sortParameter)),
-  };
-};
-
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsBar);
