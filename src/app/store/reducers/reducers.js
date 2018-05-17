@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actions from '../actions';
 
 const initialState = {
   searchParams: '',
@@ -6,7 +6,7 @@ const initialState = {
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.EXEC_SEARCH: return execSearch(state, action);
+    case actionTypes.UPDATE_SEARCH_PARAMS: return
     default: return state;
   }
 };
