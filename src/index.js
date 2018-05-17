@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Searchbox from './app/components/Header/Searchbox';
+import SearchResultsBar from './app/components/Header/SearchResultsBar';
 import reducers from './app/store/reducers/reducers';
 import './index.css';
 
@@ -16,7 +17,11 @@ const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 const app = (
   <Provider store={store}>
-    <Searchbox />
+    <div>
+      <Searchbox />
+      <SearchResultsBar />
+    </div>
+
   </Provider>
 );
 

@@ -1,5 +1,5 @@
-import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import * as actionTypes from './actionTypes';
 
 export const receiveFilms = (films) => {
   return {
@@ -8,21 +8,14 @@ export const receiveFilms = (films) => {
   };
 };
 
-export const updateSearchParams = params => (dispatch) => {
+export const requestFilms = params => (dispatch) => {
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
 };
 
-export const changeSortingCriterion = (criterion) => {
+export const updateSearchParams = (params) => {
   return {
-    type: actionTypes.CHANGE_SORTING_CRITERION,
-    criterion,
-  };
-};
-
-export const changeSortOrder = (order) => {
-  return {
-    type: actionTypes.CHANGE_SORT_ORDER,
-    order,
+    type: actionTypes.UPDATE_SEARCH_PARAMS,
+    params,
   };
 };

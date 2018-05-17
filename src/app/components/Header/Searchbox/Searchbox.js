@@ -10,14 +10,14 @@ export class Searchbox extends Component {
     super(props);
 
     this.state = {
-      filter: 'title',
-      inputValue: '',
+      searchBy: 'title',
+      search: '',
     };
   }
 
   getInputValue(e) {
     this.setState({
-      inputValue: e.target.value,
+      search: e.target.value,
     });
   }
 
@@ -28,16 +28,18 @@ export class Searchbox extends Component {
   }
 
   updateSearchParams() {
-    if (!this.state.inputValue) return;
+    if (!this.state.search) return;
 
     const params = Object.entries(this.state)
       .map(val => `${val[0]}=${val[1]}`)
       .join('&');
 
-  //  this.props.updateSearchParams(params);
+    this.props.requestFilms(params);
+
+    this.props.updateSearchParams(params);
 
     this.setState({
-      inputValue: '',
+      search: '',
     });
   }
 
@@ -49,7 +51,7 @@ export class Searchbox extends Component {
           <div className={classes.inputWrapper}>
             <Input
               type="text"
-              value={this.state.inputValue}
+              value={this.state.search}
               placeholder="Type here..."
               styles={classes.Input}
               changed={e => this.getInputValue(e)}
@@ -85,7 +87,8 @@ export class Searchbox extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //updateSearchParams: params => dispatch(actions.updateSearchParams(params)),
+    requestFilms: params => dispatch(actions.requestFilms(params)),
+    updateSearchParams: params => dispatch(actions.updateSearchParams(params)),
   };
 };
 
