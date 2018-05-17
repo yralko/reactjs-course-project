@@ -4,46 +4,30 @@ import * as actions from '../../../store/actions/';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 import classes from './index.css';
+import debounce from '../../../auxilliary/debounce';
 
 export class Searchbox extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchBy: 'title',
-      search: '',
-    };
-  }
-
-  getInputValue(e) {
-    this.setState({
-      search: e.target.value,
-    });
-  }
-
-  keyReleased(e) {
-    if (e.keyCode === 13) {
-      this.updateSearchParams();
+      filter: '',
     }
   }
 
-  updateSearchParams() {
-    if (!this.state.search) return;
+  getInputValue = debounce((e) => {
+      this.props.updateQueryParameter('search', e.target.value)
+    }, 500);
 
-    const params = Object.entries(this.state)
-      .map(val => `${val[0]}=${val[1]}`)
-      .join('&');
-
-    this.props.requestFilms(params);
-
-    this.props.updateSearchParams(params);
-
-    this.setState({
-      search: '',
-    });
+  keyReleased(e) {
+    if (e.keyCode === 13) {
+      this.props.requestFilms(this.props.query);
+    }
   }
 
   render() {
+
+
     return (
       <div>
         <div>
@@ -51,10 +35,12 @@ export class Searchbox extends Component {
           <div className={classes.inputWrapper}>
             <Input
               type="text"
-              value={this.state.search}
               placeholder="Type here..."
               styles={classes.Input}
-              changed={e => this.getInputValue(e)}
+              changed={(e) => {
+                e.persist();
+                this.getInputValue(e)
+              }}
               keyReleased={e => this.keyReleased(e)}
             />
           </div>
@@ -64,18 +50,18 @@ export class Searchbox extends Component {
             <span>Search by</span>
             <Button
               name="Title"
-              clicked={() => this.setState({ filter: 'title' })}
+              clicked={() => this.props.updateQueryParameter('searchBy', 'title')}
               className={this.state.filter === 'title' ? classes.active : null}
             />
             <Button
               name="Genre"
-              clicked={() => this.setState({ filter: 'genres' })}
+              clicked={() => this.props.updateQueryParameter('searchBy', 'genres')}
               className={this.state.filter === 'genres' ? classes.active : null}
             />
           </div>
           <div className={classes.searchButton}>
             <Button
-              clicked={() => this.updateSearchParams()}
+              clicked={() => this.props.requestFilms(this.props.query)}
               name="Search"
             />
           </div>
@@ -85,11 +71,17 @@ export class Searchbox extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    query: state.query,
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateQueryParameter: (param, value) => dispatch(actions.updateQueryParameter(param, value)),
     requestFilms: params => dispatch(actions.requestFilms(params)),
-    updateSearchParams: params => dispatch(actions.updateSearchParams(params)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(Searchbox);
+export default connect(mapStateToProps, mapDispatchToProps)(Searchbox);
