@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectFilm } from '../../store/actions'
 import { Component } from 'react';
 import classes from './index.css';
 import SearchResult from './SearchResult';
@@ -10,17 +9,11 @@ export class SearchResults extends Component {
     super(props);
   }
 
-  sortFilms(films, criterion) {
-    return [].concat(films).sort((a,b) =>  a[criterion].localeCompare(b[criterion]));
-  }
-
   render() {
-    if (this.props.foundFilms.length) {
-      const sortedFilms = this.sortFilms(this.props.foundFilms, this.props.sortParameter);
-
+    if (this.props.fetchedFilms) {
       return (
         <div className={classes.SearchResults}>
-          {sortedFilms
+          {this.props.fetchedFilms
             .map(val => <SearchResult
               src={val.poster_path}
               title={val.title}
@@ -29,7 +22,7 @@ export class SearchResults extends Component {
               release_date={val.release_date}
               key={val.id}
               id={val.id}
-              clicked={() => this.props.selectFilm(val.id)}
+              clicked={() => console.log('clicked')}
             />)
           }
         </div>
@@ -46,15 +39,8 @@ export class SearchResults extends Component {
 
 export const mapStateToProps = (state) => {
   return {
-    foundFilms: state.foundFilms,
-    sortParameter: state.sortParameter,
+    fetchedFilms: state.fetchedFilms.data,
   };
 };
 
-export const mapDispatchToProps = (dispatch) => {
-  return {
-    selectFilm: filmId => (dispatch(selectFilm(filmId))),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+export default connect(mapStateToProps)(SearchResults);

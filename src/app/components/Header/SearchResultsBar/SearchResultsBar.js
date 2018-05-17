@@ -7,27 +7,7 @@ import classes from './index.css';
 class SearchResultsBar extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      sortBy: 'release_date',
-      sortOrder: 'desc',
-    };
   };
-
-  fetchSortedFilms(criterion) {
-    if(!this.props.fetchedFilms.total) return;
-
-    this.setState({
-      sortBy: criterion,
-    });
-
-    const params = `${Object.entries(this.state)
-      .map(val => `${val[0]}=${val[1]}`)
-      .join('&')}
-      &${this.props.searchParams}`;
-
-      this.props.requestFilms(params);
-  }
 
   render() {
     return (
@@ -39,13 +19,13 @@ class SearchResultsBar extends Component {
           <span>Sort by </span>
           <button
             className={classes.sortOptions}
-            onClick={() => this.fetchSortedFilms('release_date')}
+            onClick={() => this.props.requestFilms(this.props.query, {param:'sortBy', value: 'release_date'})}
           >
             release date
           </button>
           <button
             className={classes.sortOptions}
-            onClick={() => this.fetchSortedFilms('vote_average')}
+            onClick={() => this.props.requestFilms(this.props.query, {param: 'sortBy', value: 'vote_average'})}
           >
             rating
           </button>
@@ -58,6 +38,7 @@ class SearchResultsBar extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    query: state.query,
     searchParams: state.searchParams,
     fetchedFilms: state.fetchedFilms,
   };
@@ -65,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    requestFilms: params => dispatch(actions.requestFilms(params))
+    requestFilms: (params, updatedParam) => dispatch(actions.requestFilms(params, updatedParam))
   };
 };
 

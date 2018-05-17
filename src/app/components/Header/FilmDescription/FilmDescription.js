@@ -9,15 +9,13 @@ export const FilmDescription = props => (
   <div>
     <button
       className={classes.returnToSearch}
-      onClick={() => props.returnToSearchbox()}
+      onClick={() => props.returnToSearch()}
     >
       Search
     </button>
     { props.fetchedFilms ? <CurrentFilm /> : <Loader /> }
   </div>
 );
-
-export const test = 213;
 
 export const mapStateToProps = (state) => {
   return {

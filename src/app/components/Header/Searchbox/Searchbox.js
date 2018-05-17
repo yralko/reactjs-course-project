@@ -26,8 +26,6 @@ export class Searchbox extends Component {
   }
 
   render() {
-
-
     return (
       <div>
         <div>

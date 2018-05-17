@@ -7,8 +7,7 @@ import * as actions from '../../../../store/actions';
 
 export const CurrentFilm = (props) => {
   if (props.fetchedFilms) {
-    const currentFilm = props.fetchedFilms
-      .filter(val => val.id === props.selectedFilmId)[0];
+    const currentFilm = props.fetchedFilms[0];
     return (
        <div className={classes.FilmDescription}>
          <FilmPoster
@@ -30,5 +29,11 @@ export const CurrentFilm = (props) => {
 
   return null;
 };
+
+const mapStateToProps = (state) => {
+  return {
+    fetchedFilms: state.fetchedFilms,
+  }
+}
 
 export default connect(mapStateToProps)(CurrentFilm);

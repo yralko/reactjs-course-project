@@ -16,11 +16,19 @@ export const receiveFilms = (films) => {
   };
 };
 
-export const requestFilms = query => (dispatch) => {
+export const requestFilms = (query, updatedParam) => (dispatch) => {
+  if (updatedParam) dispatch(updateQueryParameter(updatedParam.param, updatedParam.value));
+
   const params = Object.entries(query)
     .map(v => `${v[0]}=${v[1]}`)
     .join('&');
 
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
+};
+
+export const returnToSearch = () => {
+  return {
+    type: actionTypes.RETURN_TO_SEARCHBOX,
+  };
 };
