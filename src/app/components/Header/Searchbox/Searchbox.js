@@ -49,12 +49,12 @@ export class Searchbox extends Component {
             <Button
               name="Title"
               clicked={() => this.props.updateQueryParameter('searchBy', 'title')}
-              className={this.state.filter === 'title' ? classes.active : null}
+              className={this.props.query.searchBy === 'title' ? classes.active : null}
             />
             <Button
               name="Genre"
               clicked={() => this.props.updateQueryParameter('searchBy', 'genres')}
-              className={this.state.filter === 'genres' ? classes.active : null}
+              className={this.props.query.searchBy === 'genres' ? classes.active : null}
             />
           </div>
           <div className={classes.searchButton}>

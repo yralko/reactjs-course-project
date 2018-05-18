@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
+import { store } from '../../../index';
 
 export const updateQueryParameter = (parameter, value) => {
   return {
@@ -16,10 +17,11 @@ export const receiveFilms = (films) => {
   };
 };
 
-export const requestFilms = (query, updatedParam) => (dispatch) => {
+export const requestFilms = (updatedParam) => (dispatch) => {
   if (updatedParam) dispatch(updateQueryParameter(updatedParam.param, updatedParam.value));
+  if (updatedParam.param !== 'offset') dispatch(updateQueryParameter('offset', 0));
 
-  const params = Object.entries(query)
+  const params = Object.entries(store.getState().query)
     .map(v => `${v[0]}=${v[1]}`)
     .join('&');
 

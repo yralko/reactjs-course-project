@@ -6,9 +6,9 @@ const initialState = {
     searchBy: 'title',
     sortBy: 'release_date',
     sortOrder: 'desc',
+    offset: 0,
   },
-  fetchedFilms: [],
-  offset: 0,
+  fetchedFilms: {},
   filmSelected: false,
 };
 
@@ -35,7 +35,6 @@ const returnToSearchbox = (state, action) => {
     filmSelected: false,
   };
 };
-
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {

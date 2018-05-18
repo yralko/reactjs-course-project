@@ -12,7 +12,7 @@ if (module.hot) {
   module.hot.accept();
 }
 
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+export const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 const app = (
   <Provider store={store}>
