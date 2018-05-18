@@ -38,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    requestFilms: (updatedParam) => dispatch(actions.requestFilms(updatedParam))
+    requestFilms: updatedParam => dispatch(actions.requestFilms(updatedParam))
   };
 };
 

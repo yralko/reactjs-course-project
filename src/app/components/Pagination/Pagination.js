@@ -1,31 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
-const Pagination = (props) => {
-  if(!props.fetchedFilms.total) return null;
+class Pagination extends Component {
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      paginationSet: 0,
+      maxPaginationLength: 8,
+    };
+  }
 
-  const { limit, total, offset } = props.fetchedFilms;
-  const totalPages = Math.floor(total / limit);
-  const renderedList = new Array(totalPages >= 7 ? 7 : totalPages)
-    .fill(1)
-    .map((val, index) => (
-      <span
-        key={offset + index}
-        onClick={() => props.requestFilms({param: 'offset', value: offset + index})}
-      >
-        {offset + index + 1}
-      </span>
-    ))
+  nextPaginationSet() {
+    const {limit} = this.props.fetchedFilms;
 
-  return (
-    <div>
-      { offset > 0 ? <span>...</span> : null }
-      {renderedList}
-      {offset + 7 < totalPages ? <span>...</span> : null }
-    </div>
-  );
+    this.setState({
+      paginationSet: this.state.paginationSet + this.state.maxPaginationLength,
+    });
+  }
+
+  render() {
+    if(!this.props.fetchedFilms.total) return null;
+    const { offset, total, limit } = this.props.fetchedFilms;
+
+    const totalPages = Math.floor(total / limit);
+
+    const paginationList = new Array(this.state.maxPaginationLength).fill(1)
+    .map((val, index) => {
+      const newOffset = (this.state.paginationSet + index) * limit;
+
+      return (
+        <li
+          onClick={() => this.props.requestFilms({param: 'offset', value: newOffset})}
+          style={offset / limit === this.state.paginationSet + index ? {color: 'red'} : null }
+        >
+          {this.state.paginationSet + index + 1}
+        </li>
+      )
+    })
+
+    return (
+      <div>
+        <span>previous</span>
+        <ul>
+          {paginationList}
+        </ul>
+        <span onClick={() => this.nextPaginationSet()}>next</span>
+      </div>
+
+    );
+  }
 };
 
 const mapStateToProps = (state) => {

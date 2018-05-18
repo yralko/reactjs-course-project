@@ -17,7 +17,7 @@ export const receiveFilms = (films) => {
   };
 };
 
-export const requestFilms = (updatedParam) => (dispatch) => {
+export const requestFilms = updatedParam => (dispatch) => {
   if (updatedParam) dispatch(updateQueryParameter(updatedParam.param, updatedParam.value));
   if (updatedParam.param !== 'offset') dispatch(updateQueryParameter('offset', 0));
 
