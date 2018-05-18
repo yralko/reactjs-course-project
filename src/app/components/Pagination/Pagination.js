@@ -12,26 +12,35 @@ class Pagination extends Component {
     };
   }
 
-  nextPaginationSet() {
-    const {limit} = this.props.fetchedFilms;
+  previousPaginationSet() {
+    this.setState({
+      paginationSet: this.state.paginationSet - this.state.maxPaginationLength,
+    })
+  }
 
+  nextPaginationSet() {
     this.setState({
       paginationSet: this.state.paginationSet + this.state.maxPaginationLength,
     });
   }
 
   render() {
-    if(!this.props.fetchedFilms.total) return null;
+    if (!this.props.fetchedFilms.total) return null;
+
     const { offset, total, limit } = this.props.fetchedFilms;
-
     const totalPages = Math.floor(total / limit);
+    const totalPaginationSets = Math.floor(totalPages / this.state.maxPaginationLength);
+    const currentPaginationLength = totalPages > this.state.maxPaginationLength
+      ? this.state.maxPaginationLength
+      : totalPages;
 
-    const paginationList = new Array(this.state.maxPaginationLength).fill(1)
+    const paginationList = new Array(currentPaginationLength).fill(1)
     .map((val, index) => {
       const newOffset = (this.state.paginationSet + index) * limit;
 
       return (
         <li
+          key={index}
           onClick={() => this.props.requestFilms({param: 'offset', value: newOffset})}
           style={offset / limit === this.state.paginationSet + index ? {color: 'red'} : null }
         >
@@ -42,11 +51,13 @@ class Pagination extends Component {
 
     return (
       <div>
-        <span>previous</span>
+        { this.state.paginationSet > 0
+          && <span onClick={() => this.previousPaginationSet()}>previous</span> }
         <ul>
           {paginationList}
         </ul>
-        <span onClick={() => this.nextPaginationSet()}>next</span>
+        { this.state.paginationSet < totalPaginationSets
+          && <span onClick={() => this.nextPaginationSet()}>next</span> }
       </div>
 
     );
