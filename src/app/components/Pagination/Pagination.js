@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classes from './index.css';
 import * as actions from '../../store/actions';
 
 class Pagination extends Component {
@@ -44,7 +45,7 @@ class Pagination extends Component {
         <li
           key={index}
           onClick={() => this.props.requestFilms({param: 'offset', value: newOffset})}
-          style={offset / limit === this.state.paginationSet + index ? {color: 'red'} : null }
+          className={offset / limit === currentItemNumber ? classes.active : null }
         >
           {this.state.paginationSet + index + 1}
         </li>
@@ -52,7 +53,7 @@ class Pagination extends Component {
     })
 
     return (
-      <div>
+      <div className={classes.Pagination}>
         { this.state.paginationSet > 0
           && <span onClick={() => this.previousPaginationSet()}>previous</span> }
         <ul>

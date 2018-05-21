@@ -17,7 +17,7 @@ export class Searchbox extends Component {
 
   getInputValue = debounce((e) => {
       this.props.updateQueryParameter('search', e.target.value)
-    }, 500);
+    }, 200);
 
   keyReleased(e) {
     if (e.keyCode === 13) {
