@@ -24,18 +24,9 @@ export const requestFilms = updatedParam => (dispatch) => {
     if (updatedParam.param !== 'offset') dispatch(updateQueryParameter('offset', 0));
   }
 
-  // if(store.getState.query.searchBy === 'genres') {
-  //   dispatch(updateQueryParameter('searchBy', ''));
-  // } else if(store.getState.query.searchBy === 'title') {
-  //   dispatch(updateQueryParameter('searchBy', ''));
-  // }
-  console.log(Object.entries(store.getState().query));
-
   const params = Object.entries(store.getState().query)
     .map(v => `${v[0]}=${v[1]}`)
     .join('&');
-
-    console.log(params);
 
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
