@@ -51,8 +51,6 @@ class Pagination extends Component {
       )
     })
 
-    console.log(this.state.paginationSet, totalPages);
-
     return (
       <div>
         { this.state.paginationSet > 0
