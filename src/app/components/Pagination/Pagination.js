@@ -29,14 +29,16 @@ class Pagination extends Component {
 
     const { offset, total, limit } = this.props.fetchedFilms;
     const totalPages = Math.floor(total / limit);
-    const totalPaginationSets = Math.floor(totalPages / this.state.maxPaginationLength);
     const currentPaginationLength = totalPages > this.state.maxPaginationLength
       ? this.state.maxPaginationLength
       : totalPages;
 
     const paginationList = new Array(currentPaginationLength).fill(1)
     .map((val, index) => {
-      const newOffset = (this.state.paginationSet + index) * limit;
+      const currentItemNumber = this.state.paginationSet + index;
+      const newOffset = currentItemNumber * limit;
+
+      if (currentItemNumber > totalPages) return null;
 
       return (
         <li
@@ -49,6 +51,8 @@ class Pagination extends Component {
       )
     })
 
+    console.log(this.state.paginationSet, totalPages);
+
     return (
       <div>
         { this.state.paginationSet > 0
@@ -56,10 +60,9 @@ class Pagination extends Component {
         <ul>
           {paginationList}
         </ul>
-        { this.state.paginationSet < totalPaginationSets
+        { this.state.paginationSet < totalPages - this.state.maxPaginationLength
           && <span onClick={() => this.nextPaginationSet()}>next</span> }
       </div>
-
     );
   }
 };
