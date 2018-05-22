@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Brief from './Brief';
 import Poster from './Poster';
+import * as actions from '../../../store/actions';
 import classes from './index.css';
 
 const SearchResult = (props) => {
   return (
     <div
       className={classes.SearchResult}
-      onClick={() => props.clicked(props.id)}
+      onClick={() => props.selectFilm()}
     >
       <Poster
         src={props.src}
@@ -24,4 +26,10 @@ const SearchResult = (props) => {
   );
 };
 
-export default SearchResult;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectFilm: (film) => dispatch(actions.selectFilm(film)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SearchResult);

@@ -15,13 +15,13 @@ export class SearchResults extends Component {
         <div className={classes.SearchResults}>
           {this.props.fetchedFilms
             .map(val => <SearchResult
+              film={val}
               src={val.poster_path}
               title={val.title}
               tagline={val.tagline}
               genres={val.genres}
               release_date={val.release_date}
               key={val.id}
-              id={val.id}
               clicked={() => console.log('clicked')}
             />)
           }
@@ -43,4 +43,10 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectFilm: (film) => dispatch(actions.selectFilm(film)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

@@ -11,6 +11,7 @@ const initialState = {
   fetchedFilms: {},
   filmIsSelected: false,
   paginationIndex: 0,
+  currentFilm: null,
 };
 
 const updateQueryParameter = (state, action) => {
@@ -44,12 +45,19 @@ const changePaginationIndex = (state, action) => {
   }
 }
 
-const toggleFilmSelection = (state, action) => {
+const returnToSearch = (state, action) => {
   return {
     ...state,
-    filmIsSelected: action.bool,
-  }
-}
+    selectedFilmId: null,
+  };
+};
+
+const selectFilm = (state, action) => {
+  return {
+    ...state,
+    currentFilm: action.film,
+  };
+};
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
@@ -58,6 +66,8 @@ const reducers = (state = initialState, action) => {
     case actionTypes.RETURN_TO_SEARCHBOX: return returnToSearchbox(state, action);
     case actionTypes.CHANGE_PAGINATION_INDEX: return changePaginationIndex(state, action);
     case actionTypes.TOGGLE_FILM_SELECTION: return toggleFilmSelection(state, action);
+    case actionTypes.SELECT_FILM: return selectFilm(state, action);
+    case actionTypes.RETURN_TO_SEARCH: return returnToSearch(state, action);
     default: return state;
   }
 };

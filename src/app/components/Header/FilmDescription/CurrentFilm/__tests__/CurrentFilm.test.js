@@ -22,14 +22,4 @@ describe('<CurrentFilm />', () => {
   it('renders FilmPoster', () => {
     expect(wrapper.find(FilmPoster).exists()).toBe(true);
   });
-
-  describe('mapStateToProps', () => {
-    it('returns selectedFilmId', () => {
-      expect(mapStateToProps(mockInitialState).fetchedFilms).toEqual([{ title: 'mock film1', year: 2015 }, { title: 'mock film2', year: 2017 }]);
-    });
-
-    it('returns fetchedFilms', () => {
-      expect(mapStateToProps(mockInitialState).selectedFilmId).toBe(123);
-    });
-  })
 });

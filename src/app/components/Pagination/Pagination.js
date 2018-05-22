@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import classes from './index.css';
 import * as actions from '../../store/actions';
 
-class Pagination extends Component {
+export class Pagination extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      paginationStartIndex: 0,
       maxPaginationLength: 8,
     };
   }

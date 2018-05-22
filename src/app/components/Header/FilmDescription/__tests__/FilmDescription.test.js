@@ -1,19 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FilmDescription, mapStateToProps, mapDispatchToProps, test } from '../FilmDescription';
-import Loader from '../../../Loader';
+import { FilmDescription } from '../FilmDescription';
 import CurrentFilm from '../CurrentFilm';
-
-console.log(test);
+import Loader from '../../../Loader';
 
 describe('<Filmdescription />', () => {
   let wrapper;
-  const initialState = {
-    fetchedFilms: true,
-  }
 
   beforeEach(() => {
-    wrapper = shallow(<FilmDescription />);
+    wrapper = shallow(<FilmDescription fetchedFilms={[]}/>);
   });
 
   it('has a button', () => {
@@ -29,16 +24,4 @@ describe('<Filmdescription />', () => {
     wrapper.setProps({ fetchedFilms: true })
     expect(wrapper.find(CurrentFilm).exists()).toBe(true);
   });
-
-  it('returns fetchedFilms', () => {
-    console.log(mapStateToProps);
-    expect(mapStateToProps(initialState).fetchedFilms).toBe(true);
-  })
-
-  it('returns action of a correct type', () => {
-    const dispatch  = jest.fn();
-    mapDispatchToProps(dispatch).returnToSearchbox();
-
-    expect(dispatch.mock.calls[0][0].type).toBe('RETURN_TO_SEARCHBOX');
-  })
 });

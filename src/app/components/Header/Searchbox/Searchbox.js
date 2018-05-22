@@ -9,10 +9,6 @@ import debounce from '../../../auxilliary/debounce';
 export class Searchbox extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      filter: '',
-    }
   }
 
   getInputValue = debounce((e) => {

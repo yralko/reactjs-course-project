@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
-import { store } from '../../../index';
+import { store } from '../store';
 
 export const updateQueryParameter = (parameter, value) => {
   return {
@@ -27,7 +27,7 @@ export const receiveFilms = (films) => {
 const resetPagination = (dispatch) => {
   dispatch(updateQueryParameter('offset', 0));
   dispatch(changePaginationIndex(0));
-}
+};
 
 export const requestFilms = updatedParam => (dispatch) => {
   if (updatedParam) {
@@ -50,7 +50,7 @@ export const requestFilms = updatedParam => (dispatch) => {
 
 export const returnToSearch = () => {
   return {
-    type: actionTypes.RETURN_TO_SEARCHBOX,
+    type: actionTypes.RETURN_TO_SEARCH,
   };
 };
 
@@ -58,5 +58,12 @@ export const toggleFilmSelection = (bool) => {
   return {
     type: actionTypes.TOGGLE_FILM_SELECTION,
     bool,
+  };
+};
+
+export const selectFilm = (film) => {
+  return {
+    type: actionTypes.SELECT_FILM,
+    film,
   };
 };

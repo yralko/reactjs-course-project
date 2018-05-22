@@ -3,36 +3,34 @@ import { connect } from 'react-redux';
 import FilmData from '../FilmData';
 import FilmPoster from '../FilmPoster';
 import classes from './index.css';
-import * as actions from '../../../../store/actions';
 
 export const CurrentFilm = (props) => {
-  if (props.fetchedFilms) {
-    const currentFilm = props.fetchedFilms[0];
+  if (!props.currentFilm) {
+    return null;
+  } else {
     return (
-       <div className={classes.FilmDescription}>
+      <div className={classes.FilmDescription}>
          <FilmPoster
-           src={currentFilm.poster_path}
+           src={props.currentFilm.poster_path}
          />
          <FilmData
            filmData={{
-             title: currentFilm.title,
-             release_date: currentFilm.release_date,
-             duration: currentFilm.runtime,
-             overview: currentFilm.overview,
-             rating: currentFilm.vote_average,
-             genres: currentFilm.genres,
+             title: props.currentFilm.title,
+             release_date: props.currentFilm.release_date,
+             duration: props.currentFilm.runtime,
+             overview: props.currentFilm.overview,
+             rating: props.currentFilm.vote_average,
+             genres: props.currentFilm.genres,
            }}
          />
        </div>
     );
   }
-
-  return null;
 };
 
 const mapStateToProps = (state) => {
   return {
-    fetchedFilms: state.fetchedFilms,
+    currentFilm: state.currentFilm,
   }
 }
 

@@ -27,10 +27,4 @@ describe('<App />', () => {
   it('has a footer', () => {
     expect(wrapper.find(Footer).exists()).toBe(true);
   });
-
-  it('stores films fetched from the server', () => {
-    const dispatch = jest.fn();
-    mapDispatchToProps(dispatch).storeFetchedFilms();
-    expect(dispatch.mock.calls[0][0].type).toBe('STORE_FETCHED_FILMS');
-  });
 });
