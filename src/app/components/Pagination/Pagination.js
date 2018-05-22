@@ -27,10 +27,11 @@ class Pagination extends Component {
     if (!this.props.fetchedFilms.total) return null;
 
     const { offset, total, limit } = this.props.fetchedFilms;
-    const totalPages = Math.floor(total / limit);
-    const currentPaginationLength = totalPages > this.state.maxPaginationLength
+    const totalPages = Math.ceil(total / limit);
+    const remainingPages = totalPages - this.props.paginationIndex;
+    const currentPaginationLength = remainingPages > this.state.maxPaginationLength
       ? this.state.maxPaginationLength
-      : totalPages;
+      : remainingPages;
 
     const paginationList = new Array(currentPaginationLength).fill(1)
     .map((val, index) => {
