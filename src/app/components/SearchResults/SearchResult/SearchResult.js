@@ -9,27 +9,23 @@ const SearchResult = (props) => {
   return (
     <div
       className={classes.SearchResult}
-      onClick={() => props.selectFilm()}
+      onClick={() => props.clicked(props.film)}
     >
       <Poster
-        src={props.src}
-        alt={`${props.title}: ${props.tagline}`}
+        src={props.film.src}
+        alt={`${props.film..title}: ${props.film..tagline}`}
       />
       <Brief
-        filmTitle={props.title}
-        genres={props.genres.length > 1
-          ? `${props.genres.slice(0, -1).join(', ')} & ${props.genres.slice(-1)}`
-          : props.genres.toString()}
-        date={props.release_date.slice(0, 4)}
+        filmTitle={props.film..title}
+        genres={props.film..genres.length > 1
+          ? `${props.film..genres.slice(0, -1).join(', ')} & ${props.film..genres.slice(-1)}`
+          : props.film..genres.toString()}
+        date={props.film..release_date.slice(0, 4)}
       />
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    selectFilm: (film) => dispatch(actions.selectFilm(film)),
-  };
-};
+
 
 export default connect(null, mapDispatchToProps)(SearchResult);

@@ -16,13 +16,8 @@ export class SearchResults extends Component {
           {this.props.fetchedFilms
             .map(val => <SearchResult
               film={val}
-              src={val.poster_path}
-              title={val.title}
-              tagline={val.tagline}
-              genres={val.genres}
-              release_date={val.release_date}
               key={val.id}
-              clicked={() => console.log('clicked')}
+              clicked={() => props.selectFilm('clicked')}
             />)
           }
         </div>
