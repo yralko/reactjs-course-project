@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SearchResults, mapStateToProps, mapDispatchToProps, sortFilms } from './SearchResults';
-import SearchResult from './SearchResult';
+import { SearchResults, mapStateToProps, mapDispatchToProps, sortFilms } from '../SearchResults';
+import SearchResult from '../SearchResult';
 
 describe('<SearchResults />', () => {
   const mockState = {

@@ -9,7 +9,7 @@ export const FilmDescription = props => (
   <div>
     <button
       className={classes.returnToSearch}
-      onClick={() => props.returnToSearch()}
+      onClick={() => props.toggleFilmSelection(true)}
     >
       Search
     </button>
@@ -25,7 +25,7 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
-    returnToSearchbox: () => dispatch(actions.returnToSearchbox()),
+    toggleFilmSelection: bool => dispatch(actions.toggleFilmSelection(bool)),
   };
 };
 

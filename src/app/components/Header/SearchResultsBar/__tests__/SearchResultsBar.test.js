@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SearchResultsBar, mapStateToProps, mapDispatchToProps } from './SearchResultsBar';
+import { SearchResultsBar, mapStateToProps, mapDispatchToProps } from '../SearchResultsBar';
 
 describe('<SearchResultsBar />', () => {
   const mockState = {

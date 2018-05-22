@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Main, mapStateToProps } from './Main';
-import SearchResults from '../../components/SearchResults';
+import { Main, mapStateToProps } from '../Main';
+import SearchResults from '../../../components/SearchResults';
 
 describe('<Main />', () => {
   let wrapper;

@@ -53,3 +53,10 @@ export const returnToSearch = () => {
     type: actionTypes.RETURN_TO_SEARCHBOX,
   };
 };
+
+export const toggleFilmSelection = (bool) => {
+  return {
+    type: actionTypes.TOGGLE_FILM_SELECTION,
+    bool,
+  };
+};

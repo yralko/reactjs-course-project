@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Searchbox, mapStateToProps, mapDispatchToProps } from './Searchbox';
-import Input from '../../UI/Input/Input';
-import Button from '../../UI/Button/Button';
+import { Searchbox, mapStateToProps, mapDispatchToProps } from '../Searchbox';
+import Input from '../../../UI/Input/Input';
+import Button from '../../../UI/Button/Button';
 
 describe('<Searchbox />', () => {
   const mockState = {

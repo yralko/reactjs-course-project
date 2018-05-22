@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchResult from './SearchResult';
-import Brief from './Brief';
-import Poster from './Poster';
+import SearchResult from '../SearchResult';
+import Brief from '../Brief';
+import Poster from '../Poster';
 
 describe('<SearchResult />', () => {
   const mockState = {

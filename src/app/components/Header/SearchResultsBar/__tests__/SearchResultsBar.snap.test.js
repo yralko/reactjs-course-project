@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { SearchResultsBar } from './SearchResultsBar';
+import { SearchResultsBar } from '../SearchResultsBar';
 
 test('matches snapshot', () => {
   const mockState = {

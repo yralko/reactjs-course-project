@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { App, mapDispatchToProps } from './App';
-import Header from '../components/Header';
-import Main from '../containers/Main';
-import Footer from '../components/Footer';
+import { App, mapDispatchToProps } from '../App';
+import Header from '../../components/Header';
+import Main from '../../containers/Main';
+import Footer from '../../components/Footer';
 
 describe('<App />', () => {
   let wrapper;

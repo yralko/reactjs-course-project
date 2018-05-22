@@ -7,5 +7,6 @@ exports[`matches snapshot 1`] = `
   onKeyUp={[Function]}
   placeholder={undefined}
   type={undefined}
+  value={undefined}
 />
 `;

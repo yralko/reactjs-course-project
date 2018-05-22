@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Brief from './Brief';
+import Brief from '../Brief';
 
 describe('Brief', () => {
   it('contains a heading', () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import sinon from 'sinon';
 import { mount } from 'enzyme';
 
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from '../ErrorBoundary';
 
 const ProblemChild = () => {
   return <p>Error</p>;

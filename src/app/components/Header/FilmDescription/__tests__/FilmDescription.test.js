@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FilmDescription, mapStateToProps, mapDispatchToProps, test } from './FilmDescription';
-import Loader from '../../Loader';
-import CurrentFilm from './CurrentFilm';
+import { FilmDescription, mapStateToProps, mapDispatchToProps, test } from '../FilmDescription';
+import Loader from '../../../Loader';
+import CurrentFilm from '../CurrentFilm';
 
 console.log(test);
 

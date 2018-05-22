@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Poster from './Poster';
+import Poster from '../Poster';
 
 describe('<Poster />', () => {
   it('renders an image', () => {

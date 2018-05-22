@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CurrentFilm, mapStateToProps } from './CurrentFilm';
-import FilmData from '../FilmData';
-import FilmPoster from '../FilmPoster';
+import { CurrentFilm, mapStateToProps } from '../CurrentFilm';
+import FilmData from '../../FilmData';
+import FilmPoster from '../../FilmPoster';
 
 describe('<CurrentFilm />', () => {
   let wrapper;

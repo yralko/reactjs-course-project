@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Header, mapStateToProps } from './Header';
-import SearchResultsBar from './SearchResultsBar';
-import Searchbox from './Searchbox';
-import FilmDescription from './FilmDescription';
+import { Header, mapStateToProps } from '../Header';
+import SearchResultsBar from '../SearchResultsBar';
+import Searchbox from '../Searchbox';
+import FilmDescription from '../FilmDescription';
 
 describe('Header', () => {
   let wrapper;
