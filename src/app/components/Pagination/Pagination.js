@@ -8,21 +8,19 @@ class Pagination extends Component {
     super(props);
 
     this.state = {
-      paginationSet: 0,
+      paginationStartIndex: 0,
       maxPaginationLength: 8,
     };
   }
 
   previousPaginationSet() {
-    this.setState({
-      paginationSet: this.state.paginationSet - this.state.maxPaginationLength,
-    })
+    const newIndex = this.props.paginationIndex - this.state.maxPaginationLength;
+    this.props.changePaginationIndex(newIndex);
   }
 
   nextPaginationSet() {
-    this.setState({
-      paginationSet: this.state.paginationSet + this.state.maxPaginationLength,
-    });
+    const newIndex = this.props.paginationIndex + this.state.maxPaginationLength;
+    this.props.changePaginationIndex(newIndex);
   }
 
   render() {
@@ -36,7 +34,7 @@ class Pagination extends Component {
 
     const paginationList = new Array(currentPaginationLength).fill(1)
     .map((val, index) => {
-      const currentItemNumber = this.state.paginationSet + index;
+      const currentItemNumber = this.props.paginationIndex + index;
       const newOffset = currentItemNumber * limit;
 
       if (currentItemNumber > totalPages) return null;
@@ -47,19 +45,19 @@ class Pagination extends Component {
           onClick={() => this.props.requestFilms({param: 'offset', value: newOffset})}
           className={offset / limit === currentItemNumber ? classes.active : null }
         >
-          {this.state.paginationSet + index + 1}
+          {this.props.paginationIndex + index + 1}
         </li>
       )
     })
 
     return (
       <div className={classes.Pagination}>
-        { this.state.paginationSet > 0
+        { this.props.paginationIndex > 0
           && <span onClick={() => this.previousPaginationSet()}>previous</span> }
         <ul>
           {paginationList}
         </ul>
-        { this.state.paginationSet < totalPages - this.state.maxPaginationLength
+        { this.props.paginationIndex < totalPages - this.state.maxPaginationLength
           && <span onClick={() => this.nextPaginationSet()}>next</span> }
       </div>
     );
@@ -69,12 +67,14 @@ class Pagination extends Component {
 const mapStateToProps = (state) => {
   return {
     fetchedFilms: state.fetchedFilms,
+    paginationIndex: state.paginationIndex,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     requestFilms: updatedParam => dispatch(actions.requestFilms(updatedParam)),
+    changePaginationIndex: index => dispatch(actions.changePaginationIndex(index)),
   };
 };
 

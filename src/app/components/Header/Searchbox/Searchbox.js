@@ -21,7 +21,7 @@ export class Searchbox extends Component {
 
   keyReleased(e) {
     if (e.keyCode === 13) {
-      this.props.requestFilms(this.props.query);
+      this.props.requestFilms();
     }
   }
 
@@ -59,7 +59,7 @@ export class Searchbox extends Component {
           </div>
           <div className={classes.searchButton}>
             <Button
-              clicked={() => this.props.requestFilms(this.props.query)}
+              clicked={() => this.props.requestFilms()}
               name="Search"
             />
           </div>
@@ -78,7 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateQueryParameter: (param, value) => dispatch(actions.updateQueryParameter(param, value)),
-    requestFilms: params => dispatch(actions.requestFilms(params)),
+    requestFilms: () => dispatch(actions.requestFilms()),
   };
 };
 

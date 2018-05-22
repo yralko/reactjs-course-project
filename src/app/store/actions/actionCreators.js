@@ -10,6 +10,13 @@ export const updateQueryParameter = (parameter, value) => {
   };
 };
 
+export const changePaginationIndex = (index) => {
+  return {
+    type: actionTypes.CHANGE_PAGINATION_INDEX,
+    index,
+  };
+};
+
 export const receiveFilms = (films) => {
   return {
     type: actionTypes.RECEIVE_FILMS,
@@ -17,11 +24,20 @@ export const receiveFilms = (films) => {
   };
 };
 
+const resetPagination = (dispatch) => {
+  dispatch(updateQueryParameter('offset', 0));
+  dispatch(changePaginationIndex(0));
+}
+
 export const requestFilms = updatedParam => (dispatch) => {
-  if (updatedParam.param) {
+  if (updatedParam) {
     dispatch(updateQueryParameter(updatedParam.param, updatedParam.value));
 
-    if (updatedParam.param !== 'offset') dispatch(updateQueryParameter('offset', 0));
+    if (updatedParam.param !== 'offset') {
+      resetPagination(dispatch);
+    }
+  } else {
+    resetPagination(dispatch);
   }
 
   const params = Object.entries(store.getState().query)
