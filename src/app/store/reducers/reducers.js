@@ -31,13 +31,6 @@ const receiveFilms = (state, action) => {
   };
 };
 
-const returnToSearchbox = (state, action) => {
-  return {
-    ...state,
-    filmSelected: false,
-  };
-};
-
 const changePaginationIndex = (state, action) => {
   return {
     ...state,
@@ -48,7 +41,7 @@ const changePaginationIndex = (state, action) => {
 const returnToSearch = (state, action) => {
   return {
     ...state,
-    selectedFilmId: null,
+    currentFilm: null,
   };
 };
 

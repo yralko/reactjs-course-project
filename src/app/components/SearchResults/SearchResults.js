@@ -1,36 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Component } from 'react';
 import classes from './index.css';
+import * as actions from '../../store/actions';
 import SearchResult from './SearchResult';
 
-export class SearchResults extends Component {
-  constructor(props) {
-    super(props);
+const SearchResults = (props) => {
+  if (props.fetchedFilms) {
+    return (
+      <div className={classes.SearchResults}>
+        {props.fetchedFilms
+          .map(val => (<SearchResult
+            film={val}
+            key={val.id}
+            clicked={(film) => props.selectFilm(film)}
+          />))
+        }
+      </div>
+    );
   }
-
-  render() {
-    if (this.props.fetchedFilms) {
-      return (
-        <div className={classes.SearchResults}>
-          {this.props.fetchedFilms
-            .map(val => <SearchResult
-              film={val}
-              key={val.id}
-              clicked={() => props.selectFilm('clicked')}
-            />)
-          }
-        </div>
-      );
-    } else {
-      return (
-        <div className={classes.noResults}>
-          <p>No films found</p>
-        </div>
-      )
-    }
-  };
-}
+  return (
+    <div className={classes.noResults}>
+      <p>No films found</p>
+    </div>
+  );
+};
 
 export const mapStateToProps = (state) => {
   return {

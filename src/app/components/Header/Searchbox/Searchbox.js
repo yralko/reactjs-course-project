@@ -4,7 +4,7 @@ import * as actions from '../../../store/actions/';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 import classes from './index.css';
-import debounce from '../../../auxilliary/debounce';
+import debounce from 'lodash.debounce';
 
 export class Searchbox extends Component {
   constructor(props) {

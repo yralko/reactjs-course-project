@@ -9,7 +9,7 @@ import classes from './index.css';
 export const Header = (props) => {
   let renderedContent;
 
-  if (props.selectedFilmId) {
+  if (props.currentFilm) {
     renderedContent = <FilmDescription />;
   } else {
     renderedContent = <Searchbox />;
@@ -30,7 +30,7 @@ export const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    selectedFilmId: state.selectedFilmId,
+    currentFilm: state.currentFilm,
   };
 };
 
