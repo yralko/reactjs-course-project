@@ -3,22 +3,20 @@ import { connect } from 'react-redux';
 import classes from './index.css';
 import * as actions from '../../store/actions';
 
+const PAGINATION_LENGTH = 8;
+
 export class Pagination extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      maxPaginationLength: 8,
-    };
   }
 
   previousPaginationSet() {
-    const newIndex = this.props.paginationIndex - this.state.maxPaginationLength;
+    const newIndex = this.props.paginationIndex - PAGINATION_LENGTH;
     this.props.changePaginationIndex(newIndex);
   }
 
   nextPaginationSet() {
-    const newIndex = this.props.paginationIndex + this.state.maxPaginationLength;
+    const newIndex = this.props.paginationIndex + PAGINATION_LENGTH;
     this.props.changePaginationIndex(newIndex);
   }
 
@@ -28,8 +26,8 @@ export class Pagination extends Component {
     const { offset, total, limit } = this.props.fetchedFilms;
     const totalPages = Math.ceil(total / limit);
     const remainingPages = totalPages - this.props.paginationIndex;
-    const currentPaginationLength = remainingPages > this.state.maxPaginationLength
-      ? this.state.maxPaginationLength
+    const currentPaginationLength = remainingPages > PAGINATION_LENGTH
+      ? PAGINATION_LENGTH
       : remainingPages;
 
     const paginationList = new Array(currentPaginationLength).fill(1)
@@ -57,7 +55,7 @@ export class Pagination extends Component {
         <ul>
           {paginationList}
         </ul>
-        { this.props.paginationIndex < totalPages - this.state.maxPaginationLength
+        { this.props.paginationIndex < totalPages - PAGINATION_LENGTH
           && <span onClick={() => this.nextPaginationSet()}>next</span> }
       </div>
     );

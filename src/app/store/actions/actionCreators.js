@@ -24,7 +24,7 @@ export const receiveFilms = (films) => {
   };
 };
 
-const resetPagination = (dispatch) => {
+export const resetPagination = (dispatch) => {
   dispatch(updateQueryParameter('offset', 0));
   dispatch(changePaginationIndex(0));
 };

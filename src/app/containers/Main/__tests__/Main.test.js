@@ -4,25 +4,23 @@ import { Main, mapStateToProps } from '../Main';
 import SearchResults from '../../../components/SearchResults';
 
 describe('<Main />', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Main />);
-  });
-
-  it('shows that no films have been found', () => {
-    expect(wrapper.find('h1').text()).toMatch(/Films not found/);
-  });
-
-  it('shows SearchResults', () => {
-    wrapper.setProps({ fetchedFilms: true });
+  it('renders SearchResults component', () => {
+    const wrapper = shallow(<Main fetchedFilms />);
     expect(wrapper.find(SearchResults).exists()).toBe(true);
   });
 
-  it('returns appropriate prop', () => {
+  it('renders Films not found paragraph', () => {
+    const wrapper = shallow(<Main />);
+    expect(wrapper.text()).toBe('Films not found');
+  });
+
+  describe('mapStateToProps', () => {
     const mockStore = {
-      fetchedFilms: ['film1', 'film2', 'film3'],
+      fetchedFilms: ['film1', 'film2'],
     };
-    expect(mapStateToProps(mockStore).fetchedFilms).toEqual(['film1', 'film2', 'film3']);
+
+    it('returns fetchedFilms', () => {
+      expect(mapStateToProps(mockStore).fetchedFilms).toEqual(['film1', 'film2']);
+    });
   });
 });

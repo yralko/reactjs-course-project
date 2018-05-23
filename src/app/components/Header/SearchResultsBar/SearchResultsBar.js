@@ -4,22 +4,22 @@ import * as actions from '../../../store/actions';
 import classes from './index.css';
 
 
-const SearchResultsBar = (props) => {
+export const SearchResultsBar = (props) => {
   return (
     <div className={classes.SearchResultsBar}>
-      <div className="total-found">
-        <span>{props.fetchedFilms.total} {props.fetchedFilms.total === 1 ? 'film' : 'films'} found</span>
+      <div>
+        <span data-id="total-found">{props.fetchedFilms.total} {props.fetchedFilms.total === 1 ? 'film' : 'films'} found</span>
       </div>
       <div className="classes.sort-options">
         <span>Sort by </span>
         <button
-          className={props.query.sortBy === 'release_date' ? classes.sortOptions.active : classes.sortOptions}
+          className={props.sortBy === 'release_date' ? classes.sortOptions.active : classes.sortOptions}
           onClick={() => props.requestFilms({ param: 'sortBy', value: 'release_date' })}
         >
           release date
         </button>
         <button
-          className={props.query.sortBy === 'vote_average' ? classes.sortOptions.active : classes.sortOptions}
+          className={props.sortBy === 'vote_average' ? classes.sortOptions.active : classes.sortOptions}
           onClick={() => props.requestFilms({ param: 'sortBy', value: 'vote_average' })}
         >
           rating
@@ -29,14 +29,14 @@ const SearchResultsBar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
-    query: state.query,
+    sortBy: state.query.sortBy,
     fetchedFilms: state.fetchedFilms,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     requestFilms: updatedParam => dispatch(actions.requestFilms(updatedParam))
   };

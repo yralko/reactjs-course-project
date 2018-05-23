@@ -5,21 +5,28 @@ import FilmData from '../../FilmData';
 import FilmPoster from '../../FilmPoster';
 
 describe('<CurrentFilm />', () => {
-  let wrapper;
-  const mockInitialState = {
-    fetchedFilms: [{ title: 'mock film1', year: 2015 }, { title: 'mock film2', year: 2017 }],
-    selectedFilmId: 123,
-  }
-
-  beforeEach(() => {
-    wrapper = shallow(<CurrentFilm fetchedFilms={mockInitialState.fetchedFilms} />);
+  it('returns null', () => {
+    const wrapper = shallow(<CurrentFilm />);
+    expect(wrapper.children()).toHaveLength(0);
   });
 
-  it('renders FilmData', () => {
+  it('returns FilmData component', () => {
+    const wrapper = shallow(<CurrentFilm currentFilm />);
     expect(wrapper.find(FilmData).exists()).toBe(true);
   });
 
-  it('renders FilmPoster', () => {
+  it('returns FilmPoster component', () => {
+    const wrapper = shallow(<CurrentFilm currentFilm />);
     expect(wrapper.find(FilmPoster).exists()).toBe(true);
+  });
+
+  describe('mapStateToProps', () => {
+    const mockStore = {
+      currentFilm: { title: 'film1', year: 2009 },
+    };
+
+    it('returns currentFilm', () => {
+      expect(mapStateToProps(mockStore).currentFilm).toEqual({ title: 'film1', year: 2009 });
+    });
   });
 });

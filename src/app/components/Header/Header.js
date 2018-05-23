@@ -28,7 +28,7 @@ export const Header = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     currentFilm: state.currentFilm,
   };

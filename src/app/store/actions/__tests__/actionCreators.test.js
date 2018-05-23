@@ -1,54 +1,43 @@
-import { shallow } from 'enzyme';
-import * as actions from './actionCreators';
-import * as actionTypes from './actionTypes';
+import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import * as actions from '../index';
 
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
-describe('action creators', () =>  {
-  it('returns execSearch action', () => {
-    expect(actions.execSearch('test')).toEqual({
-      type: actionTypes.EXEC_SEARCH,
-      query: 'test',
-    });
+describe('Action Creators', () => {
+  it('updateQueryParameter', () => {
+    expect(actions.updateQueryParameter(1, 2)).toEqual({ parameter: 1, type: 'UPDATE_QUERY_PARAMETER', value: 2 });
   });
 
-  it('returns changeFilter action', () => {
-    expect(actions.changeFilter('test')).toEqual({
-      type: actionTypes.CHANGE_FILTER,
-      filter: 'test',
-    });
+  it('changePaginationIndex', () => {
+    expect(actions.changePaginationIndex(123)).toEqual({ index: 123, type: 'CHANGE_PAGINATION_INDEX' });
   });
 
-  it('returns storeFetchedFilms action', () => {
-    expect(actions.storeFetchedFilms('test')).toEqual({
-      type: actionTypes.STORE_FETCHED_FILMS,
-      allFilms: 'test',
-    });
+  it('receiveFilms', () => {
+    expect(actions.receiveFilms([{ title: 'film1' }])).toEqual({ films: [{ title: 'film1' }], type: 'RECEIVE_FILMS' });
   });
 
-  it('returns selectFilm action', () => {
-    expect(actions.selectFilm('test')).toEqual({
-      type: actionTypes.SELECT_FILM,
-      filmId: 'test',
-    });
+  it('resetPagination', () => {
+    const store = mockStore({});
+    actions.resetPagination(store.dispatch);
+    const expectedActionTypes = [
+      { type: 'UPDATE_QUERY_PARAMETER', parameter: 'offset', value: 0 },
+      { type: 'CHANGE_PAGINATION_INDEX', index: 0 },
+    ];
+
+    expect(store.getActions()).toEqual(expectedActionTypes);
   });
 
-  it('returns searchFilms action', () => {
-    expect(actions.searchFilms('test')).toEqual({
-      type: actionTypes.SEARCH_FILMS,
-      foundFilms: 'test',
-    });
-  });
+  it('requestFilms', () => {
+    const store = mockStore({});
 
-  it('returns returnToSearchbox action', () => {
-    expect(actions.returnToSearchbox()).toEqual({
-      type: actionTypes.RETURN_TO_SEARCHBOX,
-    });
-  });
 
-  it('returns sortFilms action', () => {
-    expect(actions.sortFilms('test')).toEqual({
-      type: actionTypes.SORT_FILMS,
-      sortParameter: 'test',
-    });
+    actions.requestFilms({ param: 'offset', value: 2 })(store.dispatch);
+    console.log(store.getActions());
   });
-})
+});
+
+// receiveFilms
+// resetPagination
+// requestFilms

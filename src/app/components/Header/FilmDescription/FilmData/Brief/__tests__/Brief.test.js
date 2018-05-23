@@ -3,21 +3,27 @@ import { shallow } from 'enzyme';
 import Brief from '../Brief';
 
 describe('<Brief />', () => {
-  const mockState = {
-    genres: ['drama', 'thriller', 'action'],
+  const filmData = {
     title: 'film1',
-    rating: 9.3,
-    year: '2016-08-14',
-    duration: 104,
-  }
+    rating: 9,
+    year: '2017-04-12',
+    duration: 102,
+    genres: ['Drama', 'Action'],
+    overview: 'Lorem ipsum dolor sit amet.',
+  };
 
-  it('renders', () => {
-    const wrapper = shallow(<Brief {...mockState}/>)
-    expect(wrapper.contains(<h2>Film name film1</h2>)).toBe(true);
-  })
-
-  it('renders', () => {
-    const wrapper = shallow(<Brief {...mockState} />)
-    expect(wrapper.find('p').exists()).toBe(true);
+  it('renders heading', () => {
+    const wrapper = shallow(<Brief {...filmData} />);
+    expect(wrapper.find('h2').text()).toBe(`Film name ${filmData.title}`);
   });
+
+  it('renders paragraph with proper text', () => {
+    const wrapper = shallow(<Brief {...filmData} />);
+    expect(wrapper.find('p').text()).toBe('Drama & Action');
+  });
+
+  it('renders three spans', () => {
+    const wrapper = shallow(<Brief {...filmData} />);
+    expect(wrapper.find('span')).toHaveLength(3);
+  })
 });

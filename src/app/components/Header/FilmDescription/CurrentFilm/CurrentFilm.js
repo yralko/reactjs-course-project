@@ -12,6 +12,7 @@ export const CurrentFilm = (props) => {
       <div className={classes.FilmDescription}>
          <FilmPoster
            src={props.currentFilm.poster_path}
+           alt={props.currentFilm.title}
          />
          <FilmData
            filmData={{
@@ -28,7 +29,7 @@ export const CurrentFilm = (props) => {
   }
 };
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     currentFilm: state.currentFilm,
   }
