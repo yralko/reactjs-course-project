@@ -4,23 +4,24 @@ import classes from './index.css';
 import * as actions from '../../store/actions';
 import SearchResult from './SearchResult';
 
-const SearchResults = (props) => {
-  if (props.fetchedFilms) {
+export const SearchResults = (props) => {
+  if (!props.fetchedFilms) {
     return (
-      <div className={classes.SearchResults}>
-        {props.fetchedFilms
-          .map(val => (<SearchResult
-            film={val}
-            key={val.id}
-            clicked={(film) => props.selectFilm(film)}
-          />))
-        }
+      <div className={classes.noResults}>
+        <p>No films found</p>
       </div>
     );
   }
+
   return (
-    <div className={classes.noResults}>
-      <p>No films found</p>
+    <div className={classes.SearchResults}>
+      {props.fetchedFilms
+        .map(val => (<SearchResult
+          film={val}
+          key={val.id}
+          clicked={(film) => props.selectFilm(film)}
+        />))
+      }
     </div>
   );
 };
@@ -31,9 +32,9 @@ export const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
-    selectFilm: (film) => dispatch(actions.selectFilm(film)),
+    selectFilm: film => dispatch(actions.selectFilm(film)),
   };
 };
 

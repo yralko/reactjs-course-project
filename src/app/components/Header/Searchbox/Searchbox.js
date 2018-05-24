@@ -21,6 +21,11 @@ export class Searchbox extends Component {
     }
   }
 
+  onChange(e) {
+    e.persist();
+    this.getInputValue(e)
+  }
+
   render() {
     return (
       <div>
@@ -31,10 +36,7 @@ export class Searchbox extends Component {
               type="text"
               placeholder="Type here..."
               styles={classes.Input}
-              changed={(e) => {
-                e.persist();
-                this.getInputValue(e)
-              }}
+              changed={e => this.onChange(e)}
               keyReleased={e => this.keyReleased(e)}
             />
           </div>
@@ -65,13 +67,13 @@ export class Searchbox extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     query: state.query,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     updateQueryParameter: (param, value) => dispatch(actions.updateQueryParameter(param, value)),
     requestFilms: () => dispatch(actions.requestFilms()),

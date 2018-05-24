@@ -44,6 +44,7 @@ export const requestFilms = updatedParam => (dispatch) => {
     .map(v => `${v[0]}=${v[1]}`)
     .join('&');
 
+
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
 };
