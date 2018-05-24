@@ -31,13 +31,19 @@ describe('Action Creators', () => {
 
   it('requestFilms', () => {
     const store = mockStore({});
-
-
-    actions.requestFilms({ param: 'offset', value: 2 })(store.dispatch);
-    console.log(store.getActions());
+    actions.requestFilms()(store.dispatch);
+    expect(store.getActions().map(v => v.type)).toEqual(['UPDATE_QUERY_PARAMETER', 'CHANGE_PAGINATION_INDEX']);
   });
-});
 
-// receiveFilms
-// resetPagination
-// requestFilms
+  it('returnToSearch', () =>  {
+    expect(actions.returnToSearch().type).toBe('RETURN_TO_SEARCH');
+  })
+
+  it('toggleFilmSelection', () =>  {
+    expect(actions.toggleFilmSelection().type).toBe('TOGGLE_FILM_SELECTION');
+  })
+
+  it('selectFilm', () =>  {
+    expect(actions.selectFilm().type).toBe('SELECT_FILM');
+  })
+});
