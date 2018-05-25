@@ -9,7 +9,7 @@ export const CurrentFilm = (props) => {
     return null;
   } else {
     return (
-      <div className={classes.FilmDescription}>
+      <div className={classes.CurrentFilm}>
          <FilmPoster
            src={props.currentFilm.poster_path}
            alt={props.currentFilm.title}

@@ -14,9 +14,17 @@
   margin-right: 20px;
 }
 
+.ratingWrapper {
+  display: block;
+}
+
 .filmRating {
-  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #ffffff;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   color: #ffffff;
 }

@@ -6,7 +6,7 @@ const Input = props => {
     <input
       id={props.id}
       value={props.value}
-      className={classes.Input}
+      className={`${classes.Input} ${props.styles}`}
       onChange={(e) => props.changed(e)}
       onKeyUp={(e) => props.keyReleased(e)}
       type={props.type}

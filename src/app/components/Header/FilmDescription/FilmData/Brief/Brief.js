@@ -5,7 +5,9 @@ const Brief = props => (
   <div className={classes.Brief}>
     <div className={classes.upperRow}>
       <h2>Film name {props.title}</h2>
-      <span className={classes.filmRating}>{props.rating}</span>
+      <div className={classes.ratingWrapper}>
+        <span className={classes.filmRating}>{props.rating}</span>
+      </div>
     </div>
     <p className={classes.genres}>
       {props.genres.length > 1

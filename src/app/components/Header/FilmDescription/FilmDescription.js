@@ -5,7 +5,7 @@ import classes from './index.css';
 import * as actions from '../../../store/actions';
 
 export const FilmDescription = props => (
-  <div>
+  <div className={classes.FilmDescription}>
     <button
       className={classes.returnToSearch}
       onClick={() => props.returnToSearch()}
