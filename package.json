@@ -8,7 +8,9 @@
       ".*": "./node_modules/jest-css-modules"
     },
     "setupTestFrameworkScriptFile": "./jest/config.js",
-    "setupFiles": ["./node_modules/regenerator-runtime/runtime"]
+    "setupFiles": [
+      "./node_modules/regenerator-runtime/runtime"
+    ]
   },
   "scripts": {
     "start": "node ./buildScripts/server.js",

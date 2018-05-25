@@ -4,6 +4,7 @@ import classes from './index.css';
 const Input = props => {
   return (
     <input
+      id={props.id}
       value={props.value}
       className={classes.Input}
       onChange={(e) => props.changed(e)}

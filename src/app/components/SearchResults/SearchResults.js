@@ -14,7 +14,7 @@ export const SearchResults = (props) => {
   }
 
   return (
-    <div className={classes.SearchResults}>
+    <div data-selector="search-results" className={classes.SearchResults}>
       {props.fetchedFilms
         .map(val => (<SearchResult
           film={val}

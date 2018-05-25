@@ -31,8 +31,9 @@ export class Searchbox extends Component {
       <div>
         <div>
           <h2 className={classes.title}>Find your movie</h2>
-          <div className={classes.inputWrapper}>
+        <div data-selector="search-input" className={classes.inputWrapper}>
             <Input
+              id="input__search"
               type="text"
               placeholder="Type here..."
               styles={classes.Input}
@@ -45,18 +46,21 @@ export class Searchbox extends Component {
           <div className={classes.filterParams}>
             <span>Search by</span>
             <Button
+              id="btn__searchBy-title"
               name="Title"
               clicked={() => this.props.updateQueryParameter('searchBy', 'title')}
               className={this.props.query.searchBy === 'title' ? classes.active : null}
             />
             <Button
+              id="btn__searchBy-genre"
               name="Genre"
               clicked={() => this.props.updateQueryParameter('searchBy', 'genres')}
               className={this.props.query.searchBy === 'genres' ? classes.active : null}
             />
           </div>
-          <div className={classes.searchButton}>
+          <div data-selector="search-button" className={classes.searchButton}>
             <Button
+              id="btn__search"
               clicked={() => this.props.requestFilms()}
               name="Search"
             />
