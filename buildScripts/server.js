@@ -12,10 +12,7 @@ const port = 3001;
 
 process.env.NODE_ENV = 'development';
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../src/index.html')));
-
 app.use('/assets', express.static(path.join(__dirname, '../dist/public')));
-
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
@@ -23,5 +20,7 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 app.use(webpackHotMiddleware(compiler));
+
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 
 app.listen(port, () => open(`http://localhost:${port}`));
