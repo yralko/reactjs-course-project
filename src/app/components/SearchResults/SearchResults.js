@@ -12,7 +12,7 @@ export class SearchResults extends Component {
   }
 
   componentWillMount() {
-    const query = this.props.location.search;
+    const query = this.props.location ? this.props.location.search : null;
     if (query) {
       const parsed = queryString.parse(query);
       Object.entries(parsed).forEach((v) => {
@@ -29,7 +29,7 @@ export class SearchResults extends Component {
     if (!this.props.fetchedFilms) {
       return (
         <div className={classes.noResults}>
-          <p>No films found</p>
+          <p>Films not found</p>
         </div>
       );
     }

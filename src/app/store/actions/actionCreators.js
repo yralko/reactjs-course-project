@@ -49,7 +49,7 @@ export const requestFilms = updatedParam => (dispatch) => {
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
 
-  history.push(`/?${params}`);
+  history.push(`/movies?${params}`);
 };
 
 export const returnToSearch = () => {
