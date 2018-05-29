@@ -7,7 +7,7 @@ import classes from './index.css';
 const SearchResult = props => (
   <div
     className={classes.SearchResult}
-    onClick={() => props.clicked(props.film)}
+    onClick={() => props.clicked(props.film.id)}
   >
     <Poster
       src={props.film.poster_path}

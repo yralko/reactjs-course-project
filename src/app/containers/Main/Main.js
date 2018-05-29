@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import InitialPage from './InitialPage';
 import ResultsPage from './ResultsPage';
+import FourOhFour from './FourOhFour';
 import classes from './index.css';
 
 
@@ -11,6 +12,8 @@ export const Main = () => (
     <Switch>
       <Route exact path='/' component={InitialPage} />
       <Route path='/movies' component={ResultsPage} />
+      <Route path='/movies/:id' component={InitialPage} />
+      <Route path='*' component={FourOhFour} />
     </Switch>
   </div>
 );

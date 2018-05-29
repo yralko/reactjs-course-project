@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Searchbox from './Searchbox';
 import FilmDescription from './FilmDescription';
-import SearchResultsBar from './SearchResultsBar';
 import Logo from '../Logo/Logo';
 import classes from './index.css';
 
@@ -10,6 +9,7 @@ export const Header = (props) => {
   let renderedContent;
 
   if (props.currentFilm) {
+    console.log(props.currentFilm);
     renderedContent = <FilmDescription />;
   } else {
     renderedContent = <Searchbox />;
@@ -22,7 +22,6 @@ export const Header = (props) => {
           <Logo />
           {renderedContent}
         </div>
-        <SearchResultsBar />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ export class SearchResults extends Component {
           .map(val => (<SearchResult
             film={val}
             key={val.id}
-            clicked={(film) => this.props.selectFilm(film)}
+            clicked={id => this.props.getFilmById(id)}
           />))
         }
       </div>
@@ -58,7 +58,7 @@ export const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch) => {
   return {
     requestFilms: () => dispatch(actions.requestFilms()),
-    selectFilm: film => dispatch(actions.selectFilm(film)),
+    getFilmById: id => dispatch(actions.getFilmById(id)),
     updateQueryParameter: (param, value) => dispatch(actions.updateQueryParameter(param, value)),
   };
 };

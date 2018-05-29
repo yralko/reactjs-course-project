@@ -52,6 +52,21 @@ export const requestFilms = updatedParam => (dispatch) => {
   history.push(`/movies?${params}`);
 };
 
+export const storeCurrentFilm = (film) => {
+  return {
+    type: actionTypes.STORE_CURRENT_FILM,
+    film,
+  };
+};
+
+export const getFilmById = id => (dispatch) => {
+  axios.get(`http://react-cdp-api.herokuapp.com/movies/${id}`)
+    .then(res => dispatch(storeCurrentFilm(res.data)));
+
+  history.push(`/movies/${id}`);
+};
+
+
 export const returnToSearch = () => {
   return {
     type: actionTypes.RETURN_TO_SEARCH,
@@ -62,12 +77,5 @@ export const toggleFilmSelection = (bool) => {
   return {
     type: actionTypes.TOGGLE_FILM_SELECTION,
     bool,
-  };
-};
-
-export const selectFilm = (film) => {
-  return {
-    type: actionTypes.SELECT_FILM,
-    film,
   };
 };

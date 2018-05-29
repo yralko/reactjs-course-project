@@ -45,7 +45,7 @@ const returnToSearch = (state, action) => {
   };
 };
 
-const selectFilm = (state, action) => {
+const storeCurrentFilm = (state, action) => {
   return {
     ...state,
     currentFilm: action.film,
@@ -57,7 +57,7 @@ const reducers = (state = initialState, action) => {
     case actionTypes.UPDATE_QUERY_PARAMETER: return updateQueryParameter(state, action);
     case actionTypes.RECEIVE_FILMS: return receiveFilms(state, action);
     case actionTypes.CHANGE_PAGINATION_INDEX: return changePaginationIndex(state, action);
-    case actionTypes.SELECT_FILM: return selectFilm(state, action);
+    case actionTypes.STORE_CURRENT_FILM: return storeCurrentFilm(state, action);
     case actionTypes.RETURN_TO_SEARCH: return returnToSearch(state, action);
     default: return state;
   }
