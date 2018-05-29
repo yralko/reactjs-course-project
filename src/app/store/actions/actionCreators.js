@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { store } from '../store';
+import history from '../../router/history';
 
 export const updateQueryParameter = (parameter, value) => {
   return {
@@ -47,6 +48,8 @@ export const requestFilms = updatedParam => (dispatch) => {
 
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
+
+  history.push(`/?${params}`);
 };
 
 export const returnToSearch = () => {

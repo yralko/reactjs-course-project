@@ -5,6 +5,8 @@ import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './reducers/reducers';
 
+export const testStore = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
+
 const persistConfig = {
   key: 'root',
   storage,
