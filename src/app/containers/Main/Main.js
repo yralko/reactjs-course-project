@@ -12,7 +12,6 @@ export const Main = () => (
     <Switch>
       <Route exact path='/' component={InitialPage} />
       <Route path='/movies' component={ResultsPage} />
-      <Route path='/movies/:id' component={InitialPage} />
       <Route path='*' component={FourOhFour} />
     </Switch>
   </div>

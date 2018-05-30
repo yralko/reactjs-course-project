@@ -16,6 +16,7 @@ export class Searchbox extends Component {
     }, 200);
 
   keyReleased(e) {
+    console.log(this.props);
     if (e.keyCode === 13) {
       this.props.requestFilms();
     }

@@ -4,17 +4,29 @@ import CurrentFilm from './CurrentFilm';
 import classes from './index.css';
 import * as actions from '../../../store/actions';
 
-export const FilmDescription = props => (
-  <div className={classes.FilmDescription}>
-    <button
-      className={classes.returnToSearch}
-      onClick={() => props.returnToSearch()}
-    >
-      Search
-    </button>
-    <CurrentFilm />
-  </div>
-);
+export class FilmDescription extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    this.props.getFilmById(this.props.match.params.id);
+  }
+
+  render() {
+    return (
+      <div className={classes.FilmDescription}>
+        <button
+          className={classes.returnToSearch}
+          onClick={() => this.props.returnToSearch()}
+        >
+          Search
+        </button>
+        <CurrentFilm />
+      </div>
+    );
+  }
+}
 
 export const mapStateToProps = (state) => {
   return {
@@ -25,6 +37,7 @@ export const mapStateToProps = (state) => {
 export const mapDispatchToProps = (dispatch) => {
   return {
     returnToSearch: () => dispatch(actions.returnToSearch()),
+    getFilmById: id => dispatch(actions.getFilmById(id)),
   };
 };
 

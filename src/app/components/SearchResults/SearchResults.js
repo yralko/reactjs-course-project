@@ -13,9 +13,8 @@ export class SearchResults extends Component {
   }
 
   componentWillMount() {
-    console.log(`componentWillMount`);
     const query = this.props.location ? this.props.location.search : null;
-    console.log(query);
+    
     if (query) {
       const parsed = queryString.parse(query);
       Object.entries(parsed).forEach((v) => {
