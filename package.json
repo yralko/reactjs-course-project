@@ -13,6 +13,9 @@
     ]
   },
   "scripts": {
+    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
+    "dev:server:build": "webpack -w --config ./webpack/webpack.server.js",
+    "dev:client:build": "webpack -w --config ./webpack/webpack.client.js",
     "start": "node ./buildScripts/server.js",
     "build": "webpack --config webpack.prod.config.js --mode=production",
     "lint": "eslint .",
