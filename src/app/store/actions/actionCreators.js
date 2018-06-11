@@ -3,9 +3,6 @@ import * as actionTypes from './actionTypes';
 import { store } from '../store';
 import history from '../../router/history';
 
-
-window.hist = history
-
 export const updateQueryParameter = (parameter, value) => {
   return {
     type: actionTypes.UPDATE_QUERY_PARAMETER,

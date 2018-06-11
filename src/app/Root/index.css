@@ -1,0 +1,14 @@
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #555;
+}
+
+body {
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}

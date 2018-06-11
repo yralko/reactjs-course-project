@@ -2,12 +2,12 @@ import React from 'react';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
-import Test from './Test';
+import Root from '../app/Root';
 import { PORT, htmlMarkup } from '../helper';
 
 const app = express();
 
-const renderedReactApp = renderToString(<Test router={StaticRouter} />);
+const renderedReactApp = renderToString(<Root Router={StaticRouter} />);
 const html = htmlMarkup(renderedReactApp);
 
 app.use(express.static('public'));

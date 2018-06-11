@@ -1,5 +1,6 @@
 import React from 'react';
+import { Router } from 'react-router-dom';
 import { hydrate } from 'react-dom';
-import Test from '../server/Test';
+import Root from '../app/Root';
 
-hydrate(<Test />, document.getElementById('root'));
+hydrate(<Root Router={Router} />, document.getElementById('root'));

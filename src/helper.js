@@ -7,6 +7,7 @@ export function htmlMarkup(embeddedApp) {
   <head>
     <meta charset="utf-8">
     <title>The HTML5 Herald</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="root">${embeddedApp}</div>

@@ -1,0 +1,383 @@
+.index__Input__2YZMw {
+  border: none;
+  outline: none;
+}
+
+
+.index__Input__3rQnS {
+  background-color: rgba(0,0,0,.7);
+  border-bottom: 2px solid #f15364;
+  padding: 0 20px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.index__Input__3rQnS::placeholder {
+  color: #e8e8e8;
+  font-style: italic;
+}
+
+.index__inputWrapper__23zFD {
+  position: relative;
+}
+
+.index__inputWrapper__23zFD:after {
+  content: '\21B5';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555555;
+  font-size: 20px;
+}
+
+.index__controls__95hVw {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.index__filterParams__3IJIK {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #fff;
+}
+
+.index__filterParams__3IJIK Button {
+  margin-left: 12px;
+  background-color: lightgray;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.index__searchButton__1aAIO Button {
+  background-color: #f65260;
+  font-size: 14px;
+  padding: 7px 50px;
+}
+
+Button {
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+}
+
+Button:focus {
+  outline: none;
+}
+
+Button:hover {
+  cursor: poiner;
+}
+
+.index__filterParams__3IJIK Button.index__active__1qEAm {
+  background-color: #f65260;
+}
+
+.index__title__3_dxU {
+  color: #fff;
+}
+
+.index__Brief__XxtjF .index__upperRow__2hB13 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.index__Brief__XxtjF .index__upperRow__2hB13 > * {
+  margin: 0;
+}
+
+.index__Brief__XxtjF .index__upperRow__2hB13 h2 {
+  color: #F65260;
+  margin-right: 20px;
+}
+
+.index__ratingWrapper__3419u {
+  display: block;
+}
+
+.index__filmRating__3a7QQ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.index__genres__1SEix {
+  color: #eeeeee;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.index__lowerRow__NQy8b {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.index__lowerRow__NQy8b span:first-child {
+  margin-right: 20px;
+}
+
+.index__Synopsis__1dG4D {
+  margin-top: 20px;
+  color: #eeeeee;
+}
+
+.index__FilmData__o_UVZ {
+  width: 70%;
+  padding: 0 40px;
+}
+
+.index__FilmPoster__2HAcv {
+  width: 30%;
+  margin: 0 20px 20px 0;
+
+}
+
+img {
+  width: 100%;
+}
+
+.index__CurrentFilm__2DsV2 {
+  display: flex;
+}
+
+.index__returnToSearch__3POj6 {
+  position: absolute;
+  right: 3%;
+  top: 30px;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  color: #f65260;
+  transition: all .3s;
+}
+
+.index__returnToSearch__3POj6:hover {
+  background-color: #f65260;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.index__Logo___WKQe {
+  color: #f65260;
+  font-size: 20px;
+  padding: 20px 0 10px;
+}
+
+.index__Header__3ftxD {
+  position: relative;
+  background-image: url('/banner.jpg');
+  background-size: 600px;
+}
+
+.index__overlay__1yQDP {
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.index__wrapper__3GnId {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.index__noResults__2Fyid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 40px;
+}
+
+
+.index__SearchResults__32axR {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-gap: 35px 60px;
+  margin: 50px auto;
+  width: 70%;
+}
+
+.index__noResults__oLP7R {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 40px;
+}
+
+.index__Brief__1i9A6 {
+  padding: 7px;
+}
+
+.index__upperRow__3ncpP {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.index__upperRow__3ncpP > * {
+  margin: 5px 0;
+}
+
+.index__upperRow__3ncpP .index__title__13VQu {
+  text-transform: uppercase;
+}
+
+.index__upperRow__3ncpP .index__date__3103Q {
+  padding: 2px 5px;
+  font-size: 11px;
+  border: 1px solid #c5c5c5;
+  border-radius: 10%;
+}
+
+.index__genres__20Iem {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.index__Poster__150Ww img {
+  width: 100%;
+}
+
+.index__SearchResult__3dvNT {
+  width: 250px;
+  padding: 10px;
+  background-color: transparent;
+  transition: all .2s;
+}
+
+.index__SearchResult__3dvNT:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.05);
+}
+
+.index__Pagination__24WDV {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f65260;
+}
+
+.index__Pagination__24WDV ul {
+  margin: 10px 0;
+  padding: 10px;
+  display: flex;
+  cursor: default;
+}
+
+.index__Pagination__24WDV li {
+  list-style: none;
+  margin: 0 5px;
+  font-size: 16px;
+  transition: all .3s;
+  user-select: none;
+}
+
+.index__Pagination__24WDV span {
+  margin: 0 10px;
+}
+
+.index__Pagination__24WDV li:hover,
+.index__Pagination__24WDV span:hover {
+  cursor: pointer;
+  color: lightgray;
+}
+
+.index__Pagination__24WDV li,
+.index__Pagination__24WDV span {
+  color: #ffffff;
+  transition: all .3s;
+}
+
+.index__Pagination__24WDV li.index__active__2AEEY {
+  padding: 0 4px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #f65260;
+}
+
+.index__SearchResultsBar__2iXJY {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px 15%;
+  background-color: #eeeeee;
+}
+
+.index__sortOptions__2PT2W {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 5px;
+  color: black;
+  border: none;
+  background-color: transparent;
+}
+
+.index__sortOptions__2PT2W.index__active__4CEAA {
+  color: red;
+}
+
+.index__sortOptions__2PT2W:hover {
+  cursor: pointer;
+}
+
+.index__pageNotFound__1PnX9 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 40px;
+  text-align: center;
+}
+
+.index__Main__1h5Xv {
+  flex: 1;
+  position: relative;
+}
+
+.index__Footer__6oRTJ {
+  height: 70px;
+  background-color: #414141;
+}
+
+.index__Footer__6oRTJ .index__wrapper__2bA5X {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.index__App__23mW7 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #555;
+}
+
+body {
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+

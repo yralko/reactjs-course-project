@@ -10,10 +10,6 @@ export class CurrentFilm extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    console.log(`mounted`);
-  }
-
   render() {
     if (!this.props.currentFilm) {
       return null;
