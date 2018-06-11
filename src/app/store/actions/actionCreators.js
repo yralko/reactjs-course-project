@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
-import { store } from '../store';
-import history from '../../router/history';
+import { concatQueryParams } from '../../../helper';
+import store from '../store';
 
 export const updateQueryParameter = (parameter, value) => {
   return {
@@ -41,15 +41,11 @@ export const requestFilms = updatedParam => (dispatch) => {
     resetPagination(dispatch);
   }
 
-  const params = Object.entries(store.getState().query)
-    .map(v => `${v[0]}=${v[1]}`)
-    .join('&');
+  const params = concatQueryParams(store);
 
 
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then(res => dispatch(receiveFilms(res.data)));
-
-  history.push(`/movies?${params}`);
 };
 
 export const storeCurrentFilm = (film) => {
@@ -62,14 +58,10 @@ export const storeCurrentFilm = (film) => {
 export const getFilmById = id => (dispatch) => {
   axios.get(`http://react-cdp-api.herokuapp.com/movies/${id}`)
     .then(res => dispatch(storeCurrentFilm(res.data)));
-
-  history.push(`/movies/${id}`);
 };
 
 
 export const returnToSearch = () => {
-  history.push('/movies');
-
   return {
     type: actionTypes.RETURN_TO_SEARCH,
   };

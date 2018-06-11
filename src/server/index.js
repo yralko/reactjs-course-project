@@ -7,12 +7,21 @@ import { PORT, htmlMarkup } from '../helper';
 
 const app = express();
 
-const renderedReactApp = renderToString(<Root Router={StaticRouter} />);
-const html = htmlMarkup(renderedReactApp);
-
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
+  const context = {};
+
+  const renderedReactApp = renderToString(<Root
+    Router={StaticRouter}
+    options={{
+      location: req.url,
+      context,
+    }}
+  />);
+
+  const html = htmlMarkup(renderedReactApp);
+
   res.send(html);
 });
 

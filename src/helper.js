@@ -7,6 +7,7 @@ export function htmlMarkup(embeddedApp) {
   <head>
     <meta charset="utf-8">
     <title>The HTML5 Herald</title>
+    <base href="/" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -15,4 +16,10 @@ export function htmlMarkup(embeddedApp) {
   </body>
   </html>
   `;
+}
+
+export function concatQueryParams(store) {
+  return Object.entries(store.getState().query)
+    .map(v => `${v[0]}=${v[1]}`)
+    .join('&');
 }

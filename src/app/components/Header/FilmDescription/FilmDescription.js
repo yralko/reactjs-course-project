@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import CurrentFilm from './CurrentFilm';
 import classes from './index.css';
 import * as actions from '../../../store/actions';
@@ -18,7 +19,10 @@ export class FilmDescription extends React.Component {
       <div className={classes.FilmDescription}>
         <button
           className={classes.returnToSearch}
-          onClick={() => this.props.returnToSearch()}
+          onClick={() => {
+            this.props.history.push('/movies');
+            this.props.returnToSearch()
+          }}
         >
           Search
         </button>
@@ -41,4 +45,4 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FilmDescription);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(FilmDescription));

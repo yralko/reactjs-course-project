@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import * as actions from '../../../store/actions/';
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 import classes from './index.css';
 import debounce from 'lodash.debounce';
+import { concatQueryParams } from '../../../../helper';
+import store from '../../../store/store';
 
 export class Searchbox extends Component {
   constructor(props) {
@@ -17,6 +20,7 @@ export class Searchbox extends Component {
 
   keyReleased(e) {
     if (e.keyCode === 13) {
+      this.props.history.push(`/movies?${concatQueryParams(store)}`);
       this.props.requestFilms();
     }
   }
@@ -61,7 +65,10 @@ export class Searchbox extends Component {
           <div data-selector="search-button" className={classes.searchButton}>
             <Button
               id="btn__search"
-              clicked={() => this.props.requestFilms()}
+              clicked={() => {
+                this.props.history.push(`/movies?${concatQueryParams(store)}`);
+                this.props.requestFilms();
+              }}
               name="Search"
             />
           </div>
@@ -84,4 +91,4 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Searchbox);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Searchbox));

@@ -14,7 +14,7 @@ export class SearchResults extends Component {
 
   componentWillMount() {
     const query = this.props.location ? this.props.location.search : null;
-    
+
     if (query) {
       const parsed = queryString.parse(query);
       Object.entries(parsed).forEach((v) => {
@@ -42,7 +42,10 @@ export class SearchResults extends Component {
           .map(val => (<SearchResult
             film={val}
             key={val.id}
-            clicked={id => this.props.getFilmById(id)}
+            clicked={(id) => {
+              this.props.history.push(`/movies/${id}`);
+              this.props.getFilmById(id);
+            }}
           />))
         }
       </div>
