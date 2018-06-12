@@ -23,7 +23,7 @@ export class SearchResults extends Component {
         }
       });
 
-      this.props.requestFilms();
+      this.props.requestFilms(true);
     }
   }
 

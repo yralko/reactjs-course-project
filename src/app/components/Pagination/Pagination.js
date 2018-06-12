@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { concatQueryParams } from '../../../helper';
+import store from '../../store/store';
 import classes from './index.css';
 import * as actions from '../../store/actions';
 
@@ -10,13 +13,20 @@ export class Pagination extends Component {
     super(props);
   }
 
-  previousPaginationSet() {
-    const newIndex = this.props.paginationIndex - PAGINATION_LENGTH;
-    this.props.changePaginationIndex(newIndex);
-  }
+  changePaginationSet(direction) {
+    let newIndex;
 
-  nextPaginationSet() {
-    const newIndex = this.props.paginationIndex + PAGINATION_LENGTH;
+    switch (direction) {
+      case 'next':
+        newIndex = this.props.paginationIndex + PAGINATION_LENGTH;
+        break;
+      case 'previous':
+        newIndex = this.props.paginationIndex - PAGINATION_LENGTH;
+        break;
+      default:
+        return;
+    }
+
     this.props.changePaginationIndex(newIndex);
   }
 
@@ -40,7 +50,12 @@ export class Pagination extends Component {
       return (
         <li
           key={index}
-          onClick={() => this.props.requestFilms({param: 'offset', value: newOffset})}
+          onClick={() => {
+            this.props.updateQueryParameter('offset', newOffset);
+            this.props.requestFilms();
+            const params = concatQueryParams(store);
+            this.props.history.push(`/movies?${params}`);
+          }}
           className={offset / limit === currentItemNumber ? classes.active : null }
         >
           {this.props.paginationIndex + index + 1}
@@ -51,12 +66,12 @@ export class Pagination extends Component {
     return (
       <div className={classes.Pagination}>
         { this.props.paginationIndex > 0
-          && <span onClick={() => this.previousPaginationSet()}>previous</span> }
+          && <span onClick={() => this.changePaginationSet('previous')}>previous</span> }
         <ul>
           {paginationList}
         </ul>
         { this.props.paginationIndex < totalPages - PAGINATION_LENGTH
-          && <span onClick={() => this.nextPaginationSet()}>next</span> }
+          && <span onClick={() => this.changePaginationSet('next')}>next</span> }
       </div>
     );
   }
@@ -73,7 +88,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     requestFilms: updatedParam => dispatch(actions.requestFilms(updatedParam)),
     changePaginationIndex: index => dispatch(actions.changePaginationIndex(index)),
+    updateQueryParameter: (parameter, value) => dispatch(actions.updateQueryParameter(parameter, value))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pagination);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Pagination));

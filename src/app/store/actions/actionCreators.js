@@ -30,22 +30,15 @@ export const resetPagination = (dispatch) => {
   dispatch(changePaginationIndex(0));
 };
 
-export const requestFilms = updatedParam => (dispatch) => {
-  if (updatedParam) {
-    dispatch(updateQueryParameter(updatedParam.param, updatedParam.value));
-
-    if (updatedParam.param !== 'offset') {
-      resetPagination(dispatch);
-    }
-  } else {
-    resetPagination(dispatch);
-  }
-
+export const requestFilms = urlBased => (dispatch) => {
   const params = concatQueryParams(store);
 
-
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
-    .then(res => dispatch(receiveFilms(res.data)));
+    .then((res) => {
+      if (!urlBased) resetPagination(dispatch);
+
+      dispatch(receiveFilms(res.data));
+    });
 };
 
 export const storeCurrentFilm = (film) => {
