@@ -18,8 +18,8 @@ module.exports = {
           options: {
             presets: [
               'react',
-              'stage-0',
               'env',
+              'stage-0',
             ],
             plugins: [
               'transform-class-properties',

@@ -201,7 +201,6 @@ img {
   font-size: 40px;
 }
 
-
 .index__SearchResults__32axR {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -364,20 +363,5 @@ img {
   flex-direction: column;
   height: 100%;
   min-height: 100vh;
-}
-
-html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #555;
-}
-
-body {
-  margin: 0;
-}
-
-button:hover {
-  cursor: pointer;
 }
 

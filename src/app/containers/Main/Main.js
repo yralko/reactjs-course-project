@@ -1,19 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import InitialPage from './InitialPage';
-import ResultsPage from './ResultsPage';
-import FourOhFour from './FourOhFour';
+import { renderRoutes } from 'react-router-config';
+import Routes from './Routes';
 import classes from './index.css';
 
 
 export const Main = () => (
   <div className={classes.Main}>
-    <Switch>
-      <Route exact path='/' component={InitialPage} />
-      <Route path='/movies' component={ResultsPage} />
-      <Route path='*' component={FourOhFour} />
-    </Switch>
+    {renderRoutes(Routes)}
   </div>
 );
 

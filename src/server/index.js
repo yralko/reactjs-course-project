@@ -1,28 +1,37 @@
-import React from 'react';
 import express from 'express';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
-import Root from '../app/Root';
-import { PORT, htmlMarkup } from '../helper';
+import { matchRoutes } from 'react-router-config';
+import { PORT, routesHandler } from '../helper';
+import renderer from './renderer/renderer';
+import HeaderRoutes from '../app/components/Header/Routes';
+import MainRoutes from '../app/containers/Main/Routes';
+import createStore from './store';
 
 const app = express();
 
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  const context = {};
+  const store = createStore();
 
-  const renderedReactApp = renderToString(<Root
-    Router={StaticRouter}
-    options={{
-      location: req.url,
-      context,
-    }}
-  />);
+  const promises = matchRoutes(MainRoutes, req.path)
+    .map(({ route }) => {
+      console.log(route)
+      return route.loadData ? route.loadData(store) : null;
+    })
+    .map(promise => {
+      if (promise) {
+        return new Promise((resolve, reject) => {
+          promise.then(resolve).catch(resolve);
+        });
+      }
+    });
 
-  const html = htmlMarkup(renderedReactApp);
+    Promise.all(promises).then(() => {
+        const context = {};
+        const content = renderer(req, store, context);
 
-  res.send(html);
+        res.send(content);
+      });
 });
 
 app.listen(PORT, () => {

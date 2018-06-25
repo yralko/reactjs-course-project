@@ -7,7 +7,6 @@ import Button from '../../UI/Button/Button';
 import classes from './index.css';
 import debounce from 'lodash.debounce';
 import { concatQueryParams } from '../../../../helper';
-import store from '../../../store/store';
 
 export class Searchbox extends Component {
   constructor(props) {
@@ -20,7 +19,7 @@ export class Searchbox extends Component {
 
   keyReleased(e) {
     if (e.keyCode === 13) {
-      this.props.history.push(`/movies?${concatQueryParams(store)}`);
+      this.props.history.push(`/movies?${concatQueryParams(this.props.query)}`);
       this.props.requestFilms();
     }
   }
@@ -31,6 +30,7 @@ export class Searchbox extends Component {
   }
 
   render() {
+    console.log(this.props.query)
     return (
       <div>
         <div>
@@ -66,7 +66,7 @@ export class Searchbox extends Component {
             <Button
               id="btn__search"
               clicked={() => {
-                this.props.history.push(`/movies?${concatQueryParams(store)}`);
+                this.props.history.push(`/movies?${concatQueryParams(this.props.query)}`);
                 this.props.requestFilms();
               }}
               name="Search"

@@ -68,4 +68,11 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchResults));
+const loadData = (store) => {
+  store.dispatch(actions.requestFilms(true));
+};
+
+export default {
+  loadData,
+  component: connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchResults)),
+}

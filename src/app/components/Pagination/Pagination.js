@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { concatQueryParams } from '../../../helper';
-import store from '../../store/store';
 import classes from './index.css';
 import * as actions from '../../store/actions';
 
@@ -53,7 +52,7 @@ export class Pagination extends Component {
           onClick={() => {
             this.props.updateQueryParameter('offset', newOffset);
             this.props.requestFilms();
-            const params = concatQueryParams(store);
+            const params = concatQueryParams(this.props.query);
             this.props.history.push(`/movies?${params}`);
           }}
           className={offset / limit === currentItemNumber ? classes.active : null }
@@ -81,6 +80,7 @@ const mapStateToProps = (state) => {
   return {
     fetchedFilms: state.fetchedFilms,
     paginationIndex: state.paginationIndex,
+    query: state.query,
   };
 };
 

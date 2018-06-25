@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { concatQueryParams } from '../../../helper';
-import store from '../store';
 
 export const updateQueryParameter = (parameter, value) => {
   return {
@@ -30,8 +29,8 @@ export const resetPagination = (dispatch) => {
   dispatch(changePaginationIndex(0));
 };
 
-export const requestFilms = urlBased => (dispatch) => {
-  const params = concatQueryParams(store);
+export const requestFilms = urlBased => (dispatch, getState) => {
+  const params = concatQueryParams(getState().query);
 
   axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then((res) => {
