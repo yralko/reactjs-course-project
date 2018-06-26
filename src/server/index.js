@@ -11,12 +11,14 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
+
   const store = createStore();
 
+  console.log('ACTUAL STORE',  store.getState())
+
   const promises = matchRoutes(MainRoutes, req.path)
-    .map(({ route }) => {
-      console.log(route)
-      return route.loadData ? route.loadData(store) : null;
+    .map((res) => {
+      return res.route.loadData ? res.route.loadData(store) : null;
     })
     .map(promise => {
       if (promise) {

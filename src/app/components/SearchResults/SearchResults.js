@@ -70,6 +70,7 @@ export const mapDispatchToProps = (dispatch) => {
 
 const loadData = (store) => {
   store.dispatch(actions.requestFilms(true));
+  console.log(store.getState());
 };
 
 export default {

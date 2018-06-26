@@ -1,5 +1,19 @@
 import * as actionTypes from '../actions/actionTypes';
 
+const initialState = {
+  query: {
+    search: '',
+    searchBy: 'title',
+    sortBy: 'release_date',
+    sortOrder: 'desc',
+    offset: 0,
+  },
+  fetchedFilms: {},
+  filmIsSelected: false,
+  paginationIndex: 0,
+  currentFilm: null,
+};
+
 const updateQueryParameter = (state, action) => {
   return {
     ...state,
