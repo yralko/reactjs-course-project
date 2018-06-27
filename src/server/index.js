@@ -1,5 +1,6 @@
 import express from 'express';
 import { matchRoutes } from 'react-router-config';
+import queryString from 'query-string'
 import { PORT } from '../helper';
 import renderer from './renderer/renderer';
 import MainRoutes from '../app/containers/Main/Routes';
@@ -15,7 +16,7 @@ app.get('*', (req, res) => {
 
   const promises = matchRoutes(MainRoutes, req.path)
     .map((res) => {
-      return res.route.loadData ? res.route.loadData(store) : null;
+      return res.route.loadData ? res.route.loadData(store, queryString.stringify(req.query)) : null;
     })
     .map(promise => {
       if (promise) {

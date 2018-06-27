@@ -21,6 +21,7 @@ export class SearchResults extends Component {
       Object.entries(parsed).forEach((v) => {
         if (v[0] in this.props.query) {
           this.props.updateQueryParameter(v[0], v[1]);
+          console.log(v[0], v[1])
         }
       });
 
@@ -69,8 +70,9 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const loadData = async (store) => {
-  await store.dispatch(actions.requestFilms(true));
+const loadData = async (store, query) => {
+  console.log("QUERY", query)
+  await store.dispatch(actions.requestFilms(null, query));
 };
 
 export default {
