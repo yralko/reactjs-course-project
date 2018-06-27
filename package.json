@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "dev": "node build/bundle.js",
+    "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:server:build": "webpack -w --config ./webpack/webpack.server.js",
     "dev:client:build": "webpack -w --config ./webpack/webpack.client.js",
@@ -96,6 +96,7 @@
     "jest": "^22.4.3",
     "jest-css-modules": "^1.1.0",
     "moxios": "^0.4.0",
+    "nodemon": "^1.17.5",
     "react-test-renderer": "^16.3.2",
     "regenerator-runtime": "^0.11.1",
     "wdio-mocha-framework": "^0.5.13"
