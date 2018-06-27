@@ -1,8 +1,7 @@
 import express from 'express';
 import { matchRoutes } from 'react-router-config';
-import { PORT, routesHandler } from '../helper';
+import { PORT } from '../helper';
 import renderer from './renderer/renderer';
-import HeaderRoutes from '../app/components/Header/Routes';
 import MainRoutes from '../app/containers/Main/Routes';
 import createStore from './store';
 
@@ -13,8 +12,6 @@ app.use(express.static('public'));
 app.get('*', (req, res) => {
 
   const store = createStore();
-
-  console.log('ACTUAL STORE',  store.getState())
 
   const promises = matchRoutes(MainRoutes, req.path)
     .map((res) => {
