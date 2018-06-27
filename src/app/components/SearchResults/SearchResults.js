@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -68,9 +69,8 @@ export const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const loadData = (store) => {
-  store.dispatch(actions.requestFilms(true));
-  console.log(store.getState());
+const loadData = async (store) => {
+  await store.dispatch(actions.requestFilms(true));
 };
 
 export default {

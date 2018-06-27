@@ -32,7 +32,7 @@ export const resetPagination = (dispatch) => {
 export const requestFilms = urlBased => (dispatch, getState) => {
   const params = concatQueryParams(getState().query);
 
-  axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
+  return axios.get(`http://react-cdp-api.herokuapp.com/movies?${params}`)
     .then((res) => {
       if (!urlBased) resetPagination(dispatch);
 
